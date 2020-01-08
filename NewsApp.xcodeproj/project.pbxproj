@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -48,7 +48,6 @@
 				89F2E6CD607527979D90A21F /* Pods-NewsApp.debug.xcconfig */,
 				6226C81550E5A9E4871BB24C /* Pods-NewsApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -73,15 +72,79 @@
 		E0F05CC023C5D22B00386CB0 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				E0F05CC123C5D22B00386CB0 /* AppDelegate.swift */,
-				E0F05CC323C5D22B00386CB0 /* SceneDelegate.swift */,
 				E0F05CC523C5D22B00386CB0 /* ViewController.swift */,
-				E0F05CC723C5D22B00386CB0 /* Main.storyboard */,
-				E0F05CCA23C5D22C00386CB0 /* Assets.xcassets */,
-				E0F05CCC23C5D22C00386CB0 /* LaunchScreen.storyboard */,
-				E0F05CCF23C5D22C00386CB0 /* Info.plist */,
+				E0F05CD923C5E05B00386CB0 /* Model */,
+				E0F05CD723C5E02400386CB0 /* View */,
+				E0F05CD823C5E04500386CB0 /* View Model */,
+				E0F05CD523C5DFF300386CB0 /* Resources */,
+				E0F05CD623C5E00D00386CB0 /* Supporting Files */,
 			);
 			path = NewsApp;
+			sourceTree = "<group>";
+		};
+		E0F05CD523C5DFF300386CB0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E0F05CCA23C5D22C00386CB0 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E0F05CD623C5E00D00386CB0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E0F05CC123C5D22B00386CB0 /* AppDelegate.swift */,
+				E0F05CC323C5D22B00386CB0 /* SceneDelegate.swift */,
+				E0F05CCF23C5D22C00386CB0 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E0F05CD723C5E02400386CB0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E0F05CDA23C5E06B00386CB0 /* News List */,
+				E0F05CDB23C5E07C00386CB0 /* Filter Popup */,
+				E0F05CDC23C5E08E00386CB0 /* Article Details */,
+				E0F05CC723C5D22B00386CB0 /* Main.storyboard */,
+				E0F05CCC23C5D22C00386CB0 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E0F05CD823C5E04500386CB0 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		E0F05CD923C5E05B00386CB0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E0F05CDA23C5E06B00386CB0 /* News List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "News List";
+			sourceTree = "<group>";
+		};
+		E0F05CDB23C5E07C00386CB0 /* Filter Popup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Filter Popup";
+			sourceTree = "<group>";
+		};
+		E0F05CDC23C5E08E00386CB0 /* Article Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Article Details";
 			sourceTree = "<group>";
 		};
 		EBA575B1C05F3DD2B3F22CC1 /* Frameworks */ = {
