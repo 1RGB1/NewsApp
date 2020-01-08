@@ -1,9 +1,9 @@
 //
 //  UIViewExtenstion.swift
-//  AMDB
+//  NewsApp
 //
-//  Created by Ahmad Ragab on 8/6/19.
-//  Copyright © 2019 Ahmad Ragab. All rights reserved.
+//  Created by Ahmad Ragab on 1/8/20.
+//  Copyright © 2020 Ahmad Ragab. All rights reserved.
 //
 
 import Foundation

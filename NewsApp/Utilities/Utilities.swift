@@ -1,15 +1,16 @@
 //
 //  Utilities.swift
-//  AMDB
+//  NewsApp
 //
-//  Created by Ahmad Ragab on 8/7/19.
-//  Copyright © 2019 Ahmad Ragab. All rights reserved.
+//  Created by Ahmad Ragab on 1/8/20.
+//  Copyright © 2020 Ahmad Ragab. All rights reserved.
 //
 
 import Foundation
 import SVProgressHUD
 
 class Utilities {
+    
     class func showProgressHUDWithSuccess(_ status: String) {
         DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
             SVProgressHUD.showSuccess(withStatus: status)
