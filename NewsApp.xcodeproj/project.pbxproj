@@ -17,6 +17,8 @@
 		E0F05CE223C5E3F600386CB0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CDE23C5E3F600386CB0 /* Constants.swift */; };
 		E0F05CE423C5E3F600386CB0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CE023C5E3F600386CB0 /* Utilities.swift */; };
 		E0F05CE523C5E3F600386CB0 /* UIViewExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CE123C5E3F600386CB0 /* UIViewExtenstion.swift */; };
+		E0F05CE923C5F23200386CB0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CE723C5F23200386CB0 /* NetworkManager.swift */; };
+		E0F05CEA23C5F23200386CB0 /* BaseNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CE823C5F23200386CB0 /* BaseNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		E0F05CDE23C5E3F600386CB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E0F05CE023C5E3F600386CB0 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		E0F05CE123C5E3F600386CB0 /* UIViewExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtenstion.swift; sourceTree = "<group>"; };
+		E0F05CE723C5F23200386CB0 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E0F05CE823C5F23200386CB0 /* BaseNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				E0F05CC523C5D22B00386CB0 /* ViewController.swift */,
+				E0F05CE623C5F23200386CB0 /* Network Layer */,
 				E0F05CD923C5E05B00386CB0 /* Model */,
 				E0F05CD723C5E02400386CB0 /* View */,
 				E0F05CD823C5E04500386CB0 /* View Model */,
@@ -162,6 +167,15 @@
 				E0F05CE123C5E3F600386CB0 /* UIViewExtenstion.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E0F05CE623C5F23200386CB0 /* Network Layer */ = {
+			isa = PBXGroup;
+			children = (
+				E0F05CE723C5F23200386CB0 /* NetworkManager.swift */,
+				E0F05CE823C5F23200386CB0 /* BaseNetwork.swift */,
+			);
+			path = "Network Layer";
 			sourceTree = "<group>";
 		};
 		EBA575B1C05F3DD2B3F22CC1 /* Frameworks */ = {
@@ -288,8 +302,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0F05CE423C5E3F600386CB0 /* Utilities.swift in Sources */,
+				E0F05CEA23C5F23200386CB0 /* BaseNetwork.swift in Sources */,
 				E0F05CC623C5D22B00386CB0 /* ViewController.swift in Sources */,
 				E0F05CC223C5D22B00386CB0 /* AppDelegate.swift in Sources */,
+				E0F05CE923C5F23200386CB0 /* NetworkManager.swift in Sources */,
 				E0F05CC423C5D22B00386CB0 /* SceneDelegate.swift in Sources */,
 				E0F05CE223C5E3F600386CB0 /* Constants.swift in Sources */,
 				E0F05CE523C5E3F600386CB0 /* UIViewExtenstion.swift in Sources */,
