@@ -2,9 +2,15 @@
 
 Show a list of news items, when selected it shows the article details screen.
 
+## Features
+
+*    **Show list of news in a tabular form**
+*    **Can filter news by country or news source**
+*    **Select an element to show more details about it**
+
 ## Authors
 
-* **Ahmad Ragab Muhammad** - *Initial work* - [1RGB1](https://github.com/1RGB1)
+* **Ahmad Ragab Muhammad** - [1RGB1](https://github.com/1RGB1)
 
 ## License
 
