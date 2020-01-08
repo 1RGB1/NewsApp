@@ -5,7 +5,7 @@ Show a list of news items, when selected it shows the article details screen.
 ## Features
 
 *    **Show list of news in a tabular form**
-*    **Can filter news by country or/and news source**
+*    **Can filter news by country or news source**
 *    **Select an element to show more details about it**
 
 ## Authors
