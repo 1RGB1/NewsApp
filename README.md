@@ -4,7 +4,7 @@ Show a list of news items, when selected it shows the article details screen.
 
 ## Authors
 
-* **Ahmad Ragab Muhammad** - *Initial work* - [1RGB1](https://github.com/1RGB1)
+* **Ahmad Ragab Muhammad** - [1RGB1](https://github.com/1RGB1)
 
 ## License
 
