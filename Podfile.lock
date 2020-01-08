@@ -1,28 +1,42 @@
 PODS:
   - Alamofire (4.9.1)
   - DropDown (2.3.13)
+  - Kingfisher (5.12.0):
+    - Kingfisher/Core (= 5.12.0)
+  - Kingfisher/Core (5.12.0)
   - ObjectMapper (3.5.1)
   - SnapKit (5.0.1)
+  - SVProgressHUD (2.2.5)
+  - SVPullToRefreshImprove (0.5)
 
 DEPENDENCIES:
   - Alamofire
   - DropDown
+  - Kingfisher
   - ObjectMapper
   - SnapKit
+  - SVProgressHUD
+  - SVPullToRefreshImprove
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - DropDown
+    - Kingfisher
     - ObjectMapper
     - SnapKit
+    - SVProgressHUD
+    - SVPullToRefreshImprove
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SVPullToRefreshImprove: 5b0760edd107d6ef96c7e09c86fe2d67f6c842a5
 
-PODFILE CHECKSUM: 6120186ff3cc3d1ddbdb68b2585e263d56809bd7
+PODFILE CHECKSUM: 61c9bff0af0d22e759098d937042199ed2aeaf5b
 
 COCOAPODS: 1.8.4

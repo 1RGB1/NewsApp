@@ -10,5 +10,8 @@ target 'NewsApp' do
   pod 'DropDown'
   pod 'SnapKit'
   pod 'ObjectMapper'
+  pod 'SVPullToRefreshImprove'
+  pod 'SVProgressHUD'
+  pod 'Kingfisher'
 
 end
