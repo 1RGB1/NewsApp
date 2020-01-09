@@ -26,6 +26,9 @@
 		E0F05CF923C605E600386CB0 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CF823C605E600386CB0 /* NewsListViewModel.swift */; };
 		E0F05CFC23C60A8600386CB0 /* NewsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CFB23C60A8600386CB0 /* NewsStore.swift */; };
 		E0F05CFE23C60CE300386CB0 /* SourcesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CFD23C60CE300386CB0 /* SourcesModel.swift */; };
+		E0F05D1C23C7487200386CB0 /* ArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05D1B23C7487100386CB0 /* ArticleDetailsViewController.swift */; };
+		E0F05D1F23C748C000386CB0 /* HeadlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05D1E23C748C000386CB0 /* HeadlineTableViewCell.swift */; };
+		E0F05D2123C7524100386CB0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05D2023C7524100386CB0 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		E0F05CF823C605E600386CB0 /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		E0F05CFB23C60A8600386CB0 /* NewsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStore.swift; sourceTree = "<group>"; };
 		E0F05CFD23C60CE300386CB0 /* SourcesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesModel.swift; sourceTree = "<group>"; };
+		E0F05D1B23C7487100386CB0 /* ArticleDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsViewController.swift; sourceTree = "<group>"; };
+		E0F05D1E23C748C000386CB0 /* HeadlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineTableViewCell.swift; sourceTree = "<group>"; };
+		E0F05D2023C7524100386CB0 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E0F05CF323C6058C00386CB0 /* NewsListViewController.swift */,
+				E0F05D1D23C7488C00386CB0 /* HeadlineTableViewCell */,
 			);
 			path = "News List";
 			sourceTree = "<group>";
@@ -178,6 +185,7 @@
 		E0F05CDC23C5E08E00386CB0 /* Article Details */ = {
 			isa = PBXGroup;
 			children = (
+				E0F05D1B23C7487100386CB0 /* ArticleDetailsViewController.swift */,
 			);
 			path = "Article Details";
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 				E0F05CDE23C5E3F600386CB0 /* Constants.swift */,
 				E0F05CE023C5E3F600386CB0 /* Utilities.swift */,
 				E0F05CE123C5E3F600386CB0 /* UIViewExtenstion.swift */,
+				E0F05D2023C7524100386CB0 /* StringExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -229,6 +238,14 @@
 				E0F05CFB23C60A8600386CB0 /* NewsStore.swift */,
 			);
 			path = "Business Layer";
+			sourceTree = "<group>";
+		};
+		E0F05D1D23C7488C00386CB0 /* HeadlineTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E0F05D1E23C748C000386CB0 /* HeadlineTableViewCell.swift */,
+			);
+			path = HeadlineTableViewCell;
 			sourceTree = "<group>";
 		};
 		EBA575B1C05F3DD2B3F22CC1 /* Frameworks */ = {
@@ -362,12 +379,15 @@
 				E0F05CE423C5E3F600386CB0 /* Utilities.swift in Sources */,
 				E0F05CEA23C5F23200386CB0 /* BaseNetwork.swift in Sources */,
 				E0F05CC223C5D22B00386CB0 /* AppDelegate.swift in Sources */,
+				E0F05D1F23C748C000386CB0 /* HeadlineTableViewCell.swift in Sources */,
 				E0F05CE923C5F23200386CB0 /* NetworkManager.swift in Sources */,
 				E0F05CEC23C5FFAB00386CB0 /* BaseModel.swift in Sources */,
 				E0F05CF923C605E600386CB0 /* NewsListViewModel.swift in Sources */,
 				E0F05CC423C5D22B00386CB0 /* SceneDelegate.swift in Sources */,
 				E0F05CE223C5E3F600386CB0 /* Constants.swift in Sources */,
+				E0F05D2123C7524100386CB0 /* StringExtension.swift in Sources */,
 				E0F05CE523C5E3F600386CB0 /* UIViewExtenstion.swift in Sources */,
+				E0F05D1C23C7487200386CB0 /* ArticleDetailsViewController.swift in Sources */,
 				E0F05CFE23C60CE300386CB0 /* SourcesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
