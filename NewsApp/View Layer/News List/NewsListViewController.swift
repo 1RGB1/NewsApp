@@ -18,13 +18,11 @@ class NewsListViewController: UIViewController {
     // MARK: - Properties
     let newsListViewModel = NewsListViewModel()
     
-    var topHeadlines: TopHeadlinesModel?
-    var filterResult: TopHeadlinesModel?
+    var topHeadlines = [ArticleModel]()
+    var filterResult = [ArticleModel]()
     var sources = [SourcesModel]()
     var searchKeyword = ""
-    
     var page = 1
-    var searchPage = 1
     
     var isFirstTimeLoad = true
     var isInFilterMode = false
@@ -36,6 +34,8 @@ class NewsListViewController: UIViewController {
         self.title = "News App"
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.font: UIFont(name: "TimesNewRomanPS-BoldMT", size: 20)!]
+        
+        newsListViewModel.delegate = self
         
         initTableView()
         getTopHeadlines()
@@ -69,6 +69,10 @@ class NewsListViewController: UIViewController {
     func getFilteredHeadlines() {
 //        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: .source, andQuery: searchKeyword)
     }
+    
+    // MARK: - Outlet Functions
+    @IBAction func filteButtonPressed(_ sender: Any) {
+    }
 }
 
 // MARK: Extensions
@@ -79,19 +83,15 @@ extension NewsListViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    
         var count = 0
-
+        
         if isInFilterMode {
-            if let model = filterResult, let articles = model.articles {
-                count = articles.count
-            }
+            count = filterResult.count
         } else {
-            if let model = topHeadlines, let articles = model.articles {
-                count = articles.count
-            }
+            count = topHeadlines.count
         }
-
+        
         if count == 0 {
             noDataFoundLabel.isHidden = false
             if !isFirstTimeLoad {
@@ -103,27 +103,32 @@ extension NewsListViewController : UITableViewDataSource, UITableViewDelegate {
             noDataFoundLabel.text = ""
             newsListTableView.isHidden = false
         }
-
+        
         return count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        var article: ArticleModel?
-        if let model = topHeadlines, let articles = model.articles,
-            let fileredModel = filterResult, let filteredArticles = fileredModel.articles {
-            article = (isInFilterMode) ? filteredArticles[indexPath.row] : articles[indexPath.row]
-        }
+        let article = (isInFilterMode) ? filterResult[indexPath.row] : topHeadlines[indexPath.row]
 
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        let detailsViewController = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
-//
-//        detailsViewController.movieId = movieId
-//        self.navigationController?.pushViewController(detailsViewController, animated: true)
+        let articleDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ArticleDetailsViewController") as! ArticleDetailsViewController
+
+        articleDetailsViewController.article = article
+        self.navigationController?.pushViewController(articleDetailsViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HeadlineTableViewCell", for: indexPath) as! HeadlineTableViewCell
+        
+        let article = (isInFilterMode) ? filterResult[indexPath.row] : topHeadlines[indexPath.row]
+        cell.setModel(article)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 
@@ -149,59 +154,56 @@ extension NewsListViewController : UISearchBarDelegate {
 
 extension NewsListViewController : NewsListViewModelDelegate {
     func setTopHeadlinesList(_ model: TopHeadlinesModel?, _ error: String?) {
-        
+        if let topHeadlinesModel = model, let articles = topHeadlinesModel.articles, let total = topHeadlinesModel.totalResults {
+            if isFirstTimeLoad {
+                Utilities.showProgressHUDWithSuccess("Success")
+                isFirstTimeLoad = false
+            }
+            
+            newsListTableView.infiniteScrollingView.stopAnimating()
+            
+            topHeadlines.append(contentsOf: articles)
+            page += 1
+            
+            newsListTableView.reloadData()
+            newsListTableView.showsInfiniteScrolling = (page <= total)
+        } else {
+            if isFirstTimeLoad {
+                Utilities.showProgressHUDWithError(error ?? "")
+                isFirstTimeLoad = false
+            }
+            
+            newsListTableView.infiniteScrollingView.stopAnimating()
+            newsListTableView.showsInfiniteScrolling = false
+        }
     }
     
     func setFilteredList(_ model: TopHeadlinesModel?, _ error: String?) {
-        
-    }
-    
-    func setSourcesList(_ model: SourcesModel?, _ error: String?) {
-        
-    }
-    
-//    func setNowPlayingMoviesList(_ model: SearchMoviesModel?, _ error: String?) {
-//        if let searchMoviesModel = model, let newMovies = searchMoviesModel.results, let allPages = searchMoviesModel.total_pages {
-//
+//        if let topHeadlinesModel = model, let articles = topHeadlinesModel.articles, let total = topHeadlinesModel.totalResults {
 //            if isFirstTimeLoad {
 //                Utilities.showProgressHUDWithSuccess("Success")
 //                isFirstTimeLoad = false
 //            }
-//
-//            moviesListTableView.infiniteScrollingView.stopAnimating()
-//
-//            movies.append(contentsOf: newMovies)
+//            
+//            newsListTableView.infiniteScrollingView.stopAnimating()
+//            
+//            filterResult.append(contentsOf: articles)
 //            page += 1
-//            maxPagesCount = allPages
-//
-//            moviesListTableView.reloadData()
-//            moviesListTableView.showsInfiniteScrolling = (page <= maxPagesCount)
+//            
+//            newsListTableView.reloadData()
+//            newsListTableView.showsInfiniteScrolling = (page <= total)
 //        } else {
 //            if isFirstTimeLoad {
 //                Utilities.showProgressHUDWithError(error ?? "")
 //                isFirstTimeLoad = false
 //            }
-//
-//            moviesListTableView.infiniteScrollingView.stopAnimating()
-//            moviesListTableView.showsInfiniteScrolling = false
+//            
+//            newsListTableView.infiniteScrollingView.stopAnimating()
+//            newsListTableView.showsInfiniteScrolling = false
 //        }
-//    }
+    }
     
-//    func setSearchMoviesList(_ model: SearchMoviesModel?, _ error: String?) {
-//        if let searchMoviesModel = model, let newMovies = searchMoviesModel.results, let allPages = searchMoviesModel.total_pages {
-//
-//            moviesListTableView.infiniteScrollingView.stopAnimating()
-//
-//            searchResult.append(contentsOf: newMovies)
-//            searchPage += 1
-//            maxSearchPages = allPages
-//
-//            moviesListTableView.reloadData()
-//            moviesListTableView.showsInfiniteScrolling = (searchPage <= maxSearchPages)
-//        } else {
-//
-//            moviesListTableView.infiniteScrollingView.stopAnimating()
-//            moviesListTableView.showsInfiniteScrolling = false
-//        }
-//    }
+    func setSourcesList(_ model: SourcesModel?, _ error: String?) {
+        
+    }
 }
