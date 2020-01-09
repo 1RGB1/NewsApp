@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ahmad Ragab. All rights reserved.
 //
 
-import Foundation
+import Kingfisher
 import SVProgressHUD
 
 class Utilities {
