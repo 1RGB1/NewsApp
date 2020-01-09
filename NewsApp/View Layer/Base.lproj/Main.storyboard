@@ -65,7 +65,9 @@
                                                         <constraint firstItem="Mvz-RB-6VX" firstAttribute="leading" secondItem="4Vn-YN-aui" secondAttribute="trailing" constant="20" id="hH4-fd-hx5"/>
                                                         <constraint firstAttribute="trailing" secondItem="Mvz-RB-6VX" secondAttribute="trailing" constant="15" id="iP4-Kq-HkI"/>
                                                         <constraint firstItem="4Vn-YN-aui" firstAttribute="centerY" secondItem="Gk6-QP-lH6" secondAttribute="centerY" id="nt0-Ob-SMX"/>
+                                                        <constraint firstItem="4Vn-YN-aui" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Gk6-QP-lH6" secondAttribute="top" priority="999" constant="15" id="ofe-by-qU6"/>
                                                         <constraint firstItem="Prh-Qk-cQM" firstAttribute="trailing" secondItem="Mvz-RB-6VX" secondAttribute="trailing" id="rBx-J3-mTK"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4Vn-YN-aui" secondAttribute="bottom" priority="999" constant="15" id="w3J-Ta-ew3"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
