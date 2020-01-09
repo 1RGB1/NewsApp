@@ -25,9 +25,8 @@ let ERROR_Message: String = "error"
 
 // Calling APIs
 let BASE_URL: String = "https://newsapi.org/v2/"
-let TOP_HEADLINES: String = "top-headlines?"
-let SOURCES: String = "sources?"
-let IMAGE_BASE_URL: String = ""
+let TOP_HEADLINES: String = "top-headlines"
+let SOURCES: String = "sources"
 
 let NEWS_LIST_URL: String = BASE_URL + TOP_HEADLINES
 let SOURCES_URL: String = BASE_URL + SOURCES
