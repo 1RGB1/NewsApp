@@ -22,6 +22,10 @@
 		E0F05CEE23C5FFEF00386CB0 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CED23C5FFEF00386CB0 /* ArticleModel.swift */; };
 		E0F05CF023C600AC00386CB0 /* TopHeadlinesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CEF23C600AC00386CB0 /* TopHeadlinesModel.swift */; };
 		E0F05CF223C6015900386CB0 /* SourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CF123C6015900386CB0 /* SourceModel.swift */; };
+		E0F05CF423C6058C00386CB0 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CF323C6058C00386CB0 /* NewsListViewController.swift */; };
+		E0F05CF923C605E600386CB0 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CF823C605E600386CB0 /* NewsListViewModel.swift */; };
+		E0F05CFC23C60A8600386CB0 /* NewsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CFB23C60A8600386CB0 /* NewsStore.swift */; };
+		E0F05CFE23C60CE300386CB0 /* SourcesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CFD23C60CE300386CB0 /* SourcesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		E0F05CED23C5FFEF00386CB0 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		E0F05CEF23C600AC00386CB0 /* TopHeadlinesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesModel.swift; sourceTree = "<group>"; };
 		E0F05CF123C6015900386CB0 /* SourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceModel.swift; sourceTree = "<group>"; };
+		E0F05CF323C6058C00386CB0 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
+		E0F05CF823C605E600386CB0 /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
+		E0F05CFB23C60A8600386CB0 /* NewsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStore.swift; sourceTree = "<group>"; };
+		E0F05CFD23C60CE300386CB0 /* SourcesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				E0F05CE623C5F23200386CB0 /* Network Layer */,
+				E0F05CFA23C60A6D00386CB0 /* Business Layer */,
 				E0F05CD923C5E05B00386CB0 /* Model Layer */,
 				E0F05CD823C5E04500386CB0 /* View Model Layer */,
 				E0F05CD723C5E02400386CB0 /* View Layer */,
@@ -132,6 +141,9 @@
 		E0F05CD823C5E04500386CB0 /* View Model Layer */ = {
 			isa = PBXGroup;
 			children = (
+				E0F05CF523C6059E00386CB0 /* News List View Model */,
+				E0F05CF623C605A700386CB0 /* Filter Popup View Model */,
+				E0F05CF723C605BE00386CB0 /* Article Details View Model */,
 			);
 			path = "View Model Layer";
 			sourceTree = "<group>";
@@ -142,6 +154,7 @@
 				E0F05CEB23C5FFAB00386CB0 /* BaseModel.swift */,
 				E0F05CEF23C600AC00386CB0 /* TopHeadlinesModel.swift */,
 				E0F05CED23C5FFEF00386CB0 /* ArticleModel.swift */,
+				E0F05CFD23C60CE300386CB0 /* SourcesModel.swift */,
 				E0F05CF123C6015900386CB0 /* SourceModel.swift */,
 			);
 			path = "Model Layer";
@@ -150,6 +163,7 @@
 		E0F05CDA23C5E06B00386CB0 /* News List */ = {
 			isa = PBXGroup;
 			children = (
+				E0F05CF323C6058C00386CB0 /* NewsListViewController.swift */,
 			);
 			path = "News List";
 			sourceTree = "<group>";
@@ -185,6 +199,36 @@
 				E0F05CE823C5F23200386CB0 /* BaseNetwork.swift */,
 			);
 			path = "Network Layer";
+			sourceTree = "<group>";
+		};
+		E0F05CF523C6059E00386CB0 /* News List View Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0F05CF823C605E600386CB0 /* NewsListViewModel.swift */,
+			);
+			path = "News List View Model";
+			sourceTree = "<group>";
+		};
+		E0F05CF623C605A700386CB0 /* Filter Popup View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Filter Popup View Model";
+			sourceTree = "<group>";
+		};
+		E0F05CF723C605BE00386CB0 /* Article Details View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Article Details View Model";
+			sourceTree = "<group>";
+		};
+		E0F05CFA23C60A6D00386CB0 /* Business Layer */ = {
+			isa = PBXGroup;
+			children = (
+				E0F05CFB23C60A8600386CB0 /* NewsStore.swift */,
+			);
+			path = "Business Layer";
 			sourceTree = "<group>";
 		};
 		EBA575B1C05F3DD2B3F22CC1 /* Frameworks */ = {
@@ -310,17 +354,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0F05CFC23C60A8600386CB0 /* NewsStore.swift in Sources */,
 				E0F05CF023C600AC00386CB0 /* TopHeadlinesModel.swift in Sources */,
 				E0F05CF223C6015900386CB0 /* SourceModel.swift in Sources */,
 				E0F05CEE23C5FFEF00386CB0 /* ArticleModel.swift in Sources */,
+				E0F05CF423C6058C00386CB0 /* NewsListViewController.swift in Sources */,
 				E0F05CE423C5E3F600386CB0 /* Utilities.swift in Sources */,
 				E0F05CEA23C5F23200386CB0 /* BaseNetwork.swift in Sources */,
 				E0F05CC223C5D22B00386CB0 /* AppDelegate.swift in Sources */,
 				E0F05CE923C5F23200386CB0 /* NetworkManager.swift in Sources */,
 				E0F05CEC23C5FFAB00386CB0 /* BaseModel.swift in Sources */,
+				E0F05CF923C605E600386CB0 /* NewsListViewModel.swift in Sources */,
 				E0F05CC423C5D22B00386CB0 /* SceneDelegate.swift in Sources */,
 				E0F05CE223C5E3F600386CB0 /* Constants.swift in Sources */,
 				E0F05CE523C5E3F600386CB0 /* UIViewExtenstion.swift in Sources */,
+				E0F05CFE23C60CE300386CB0 /* SourcesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +515,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4B6HF4627C;
-				INFOPLIST_FILE = NewsApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NewsApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,7 +534,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4B6HF4627C;
-				INFOPLIST_FILE = NewsApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NewsApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
