@@ -44,7 +44,7 @@ class Utilities {
     }
     
     class func setImage(_ imageView: UIImageView, _ imageURL: String) {
-        let url = URL(string: IMAGE_BASE_URL + imageURL)
-        imageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "themoviedb"), options:[.transition(.fade(1))])
+        let url = URL(string: imageURL)
+        imageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "Placeholder"), options:[.transition(.fade(1))])
     }
 }
