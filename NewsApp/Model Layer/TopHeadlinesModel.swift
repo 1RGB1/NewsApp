@@ -8,14 +8,12 @@
 
 import ObjectMapper
 
-class TopHeadlinesModel: Mappable {
+class TopHeadlinesModel: BaseModel {
     
     var totalResults: Int?
     var articles: [ArticleModel]?
     
-    required init?(map: Map) {}
-    
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         totalResults <- map["totalResults"]
         articles <- map["articles"]
     }
