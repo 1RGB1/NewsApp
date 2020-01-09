@@ -21,15 +21,26 @@ let API_KEY: String = "267ceaf325a9437eae27a460b05d5484"
 
 // Other URL Configurations
 let ENGLISH: String = "en-US"
+let ERROR_Message: String = "error"
 
 // Calling APIs
 let BASE_URL: String = "https://newsapi.org/v2/"
-let TOP_HEADLINES_URL_EXTENSION: String = "top-headlines?"
+let TOP_HEADLINES: String = "top-headlines?"
+let SOURCES: String = "sources?"
 let IMAGE_BASE_URL: String = ""
 
-let NEWS_LIST_URL_EXTENSION: String = BASE_URL + TOP_HEADLINES_URL_EXTENSION + "q=a&" + "apiKey=\(API_KEY)" + "&page="
-let COUNTRIES_URL_EXTENSION: String = BASE_URL + ""
-let SOURCES_URL_EXTENSION: String = BASE_URL + "sources?" + "apiKey=\(API_KEY)"
+let NEWS_LIST_URL: String = BASE_URL + TOP_HEADLINES
+let SOURCES_URL: String = BASE_URL + SOURCES
+let COUNTRIES_UR: String = BASE_URL + ""
 
-let FILTER_URL_EXTENSION: String = BASE_URL + TOP_HEADLINES_URL_EXTENSION + "apiKey=\(API_KEY)" + "&country="
-let COUNTRY_URL_EXTENSION: String = BASE_URL + TOP_HEADLINES_URL_EXTENSION + "apiKey=\(API_KEY)" + "&sources="
+let FILTER_URL: String = BASE_URL + TOP_HEADLINES
+
+enum FILTER_QUERY {
+    case country
+    case source
+}
+
+enum HEADLINES {
+    case everything
+    case filtered
+}
