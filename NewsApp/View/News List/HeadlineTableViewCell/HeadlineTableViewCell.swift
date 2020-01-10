@@ -26,14 +26,11 @@ class HeadlineTableViewCell: UITableViewCell {
     func setModel(_ model: ArticleModel?) {
         if let article = model {
             
-            // Set Image Logo
             let imageURL = article.urlToImage ?? ""
             Utilities.setImage(headlineLogoImageView, imageURL)
             
-            // Set Title Label
             headlineTitleLabel.text = article.title ?? "Headline"
             
-            // Set Date Label
             headlineDateLabel.text = (article.publishedAt ?? "").convertDateString() ?? ""
         }
     }
