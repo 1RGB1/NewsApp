@@ -102,14 +102,12 @@
 		E0F05CC023C5D22B00386CB0 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				E0F05CE623C5F23200386CB0 /* Network Layer */,
-				E0F05CFA23C60A6D00386CB0 /* Business Layer */,
-				E0F05CD923C5E05B00386CB0 /* Model Layer */,
-				E0F05CD823C5E04500386CB0 /* View Model Layer */,
-				E0F05CD723C5E02400386CB0 /* View Layer */,
-				E0F05CD523C5DFF300386CB0 /* Resources */,
+				E0F05CE623C5F23200386CB0 /* Network */,
+				E0F05CFA23C60A6D00386CB0 /* Business */,
+				E0F05CD923C5E05B00386CB0 /* Model */,
+				E0F05CD823C5E04500386CB0 /* View Model */,
+				E0F05CD723C5E02400386CB0 /* View */,
 				E0F05CD623C5E00D00386CB0 /* Supporting Files */,
-				E0F05CDD23C5E3F600386CB0 /* Utilities */,
 			);
 			path = NewsApp;
 			sourceTree = "<group>";
@@ -125,6 +123,8 @@
 		E0F05CD623C5E00D00386CB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E0F05CD523C5DFF300386CB0 /* Resources */,
+				E0F05CDD23C5E3F600386CB0 /* Utilities */,
 				E0F05CC123C5D22B00386CB0 /* AppDelegate.swift */,
 				E0F05CC323C5D22B00386CB0 /* SceneDelegate.swift */,
 				E0F05CCF23C5D22C00386CB0 /* Info.plist */,
@@ -132,7 +132,7 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E0F05CD723C5E02400386CB0 /* View Layer */ = {
+		E0F05CD723C5E02400386CB0 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				E0F05CDA23C5E06B00386CB0 /* News List */,
@@ -141,20 +141,20 @@
 				E0F05CC723C5D22B00386CB0 /* Main.storyboard */,
 				E0F05CCC23C5D22C00386CB0 /* LaunchScreen.storyboard */,
 			);
-			path = "View Layer";
+			path = View;
 			sourceTree = "<group>";
 		};
-		E0F05CD823C5E04500386CB0 /* View Model Layer */ = {
+		E0F05CD823C5E04500386CB0 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
 				E0F05CF523C6059E00386CB0 /* News List View Model */,
 				E0F05CF623C605A700386CB0 /* Filter Popup View Model */,
 				E0F05CF723C605BE00386CB0 /* Article Details View Model */,
 			);
-			path = "View Model Layer";
+			path = "View Model";
 			sourceTree = "<group>";
 		};
-		E0F05CD923C5E05B00386CB0 /* Model Layer */ = {
+		E0F05CD923C5E05B00386CB0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E0F05CEB23C5FFAB00386CB0 /* BaseModel.swift */,
@@ -163,7 +163,7 @@
 				E0F05CFD23C60CE300386CB0 /* SourcesModel.swift */,
 				E0F05CF123C6015900386CB0 /* SourceModel.swift */,
 			);
-			path = "Model Layer";
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E0F05CDA23C5E06B00386CB0 /* News List */ = {
@@ -201,13 +201,13 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		E0F05CE623C5F23200386CB0 /* Network Layer */ = {
+		E0F05CE623C5F23200386CB0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				E0F05CE723C5F23200386CB0 /* NetworkManager.swift */,
 				E0F05CE823C5F23200386CB0 /* BaseNetwork.swift */,
 			);
-			path = "Network Layer";
+			path = Network;
 			sourceTree = "<group>";
 		};
 		E0F05CF523C6059E00386CB0 /* News List View Model */ = {
@@ -232,12 +232,12 @@
 			path = "Article Details View Model";
 			sourceTree = "<group>";
 		};
-		E0F05CFA23C60A6D00386CB0 /* Business Layer */ = {
+		E0F05CFA23C60A6D00386CB0 /* Business */ = {
 			isa = PBXGroup;
 			children = (
 				E0F05CFB23C60A8600386CB0 /* NewsStore.swift */,
 			);
-			path = "Business Layer";
+			path = Business;
 			sourceTree = "<group>";
 		};
 		E0F05D1D23C7488C00386CB0 /* HeadlineTableViewCell */ = {
