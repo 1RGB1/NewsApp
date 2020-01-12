@@ -29,6 +29,8 @@
 		E0F05D1C23C7487200386CB0 /* ArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05D1B23C7487100386CB0 /* ArticleDetailsViewController.swift */; };
 		E0F05D1F23C748C000386CB0 /* HeadlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05D1E23C748C000386CB0 /* HeadlineTableViewCell.swift */; };
 		E0F05D2123C7524100386CB0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05D2023C7524100386CB0 /* StringExtension.swift */; };
+		E0F05D2323CB272900386CB0 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05D2223CB272900386CB0 /* FilterView.swift */; };
+		E0F05D2523CB274D00386CB0 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0F05D2423CB274D00386CB0 /* FilterView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		E0F05D1B23C7487100386CB0 /* ArticleDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsViewController.swift; sourceTree = "<group>"; };
 		E0F05D1E23C748C000386CB0 /* HeadlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineTableViewCell.swift; sourceTree = "<group>"; };
 		E0F05D2023C7524100386CB0 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		E0F05D2223CB272900386CB0 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		E0F05D2423CB274D00386CB0 /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 		E0F05CDB23C5E07C00386CB0 /* Filter Popup */ = {
 			isa = PBXGroup;
 			children = (
+				E0F05D2223CB272900386CB0 /* FilterView.swift */,
+				E0F05D2423CB274D00386CB0 /* FilterView.xib */,
 			);
 			path = "Filter Popup";
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0F05D2523CB274D00386CB0 /* FilterView.xib in Resources */,
 				E0F05CCE23C5D22C00386CB0 /* LaunchScreen.storyboard in Resources */,
 				E0F05CCB23C5D22C00386CB0 /* Assets.xcassets in Resources */,
 				E0F05CC923C5D22B00386CB0 /* Main.storyboard in Resources */,
@@ -387,6 +394,7 @@
 				E0F05CE223C5E3F600386CB0 /* Constants.swift in Sources */,
 				E0F05D2123C7524100386CB0 /* StringExtension.swift in Sources */,
 				E0F05CE523C5E3F600386CB0 /* UIViewExtenstion.swift in Sources */,
+				E0F05D2323CB272900386CB0 /* FilterView.swift in Sources */,
 				E0F05D1C23C7487200386CB0 /* ArticleDetailsViewController.swift in Sources */,
 				E0F05CFE23C60CE300386CB0 /* SourcesModel.swift in Sources */,
 			);
