@@ -8,6 +8,7 @@
 
 import UIKit
 import SVPullToRefreshImprove
+import SnapKit
 
 class NewsListViewController: UIViewController {
 
@@ -76,6 +77,15 @@ class NewsListViewController: UIViewController {
     
     // MARK: - Outlet Functions
     @IBAction func filteButtonPressed(_ sender: Any) {
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        let filterView = FilterView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        self.view.addSubview(filterView)
+        
+        filterView.snp.makeConstraints { (make) in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
     }
 }
 
