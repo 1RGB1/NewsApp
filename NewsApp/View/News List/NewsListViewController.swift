@@ -81,19 +81,22 @@ class NewsListViewController: UIViewController {
         let height = UIScreen.main.bounds.size.height
         let filterView = FilterView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
+        filterView.countries = self.countries
+        filterView.sources = self.sources
+        
         self.view.addSubview(filterView)
         
         filterView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        filterView.initData()
     }
     
     // MARK: - Outlet Functions
     @IBAction func filteButtonPressed(_ sender: Any) {
         newsListViewModel.getCountriesList()
         newsListViewModel.getSourcesList()
-        
-        showFilterView()
     }
 }
 
@@ -233,6 +236,7 @@ extension NewsListViewController : NewsListViewModelDelegate {
     func setSourcesList(_ model: SourcesModel?, _ error: String?) {
         if let sourcesModel = model, let list = sourcesModel.sources {
             self.sources = list
+            showFilterView()
         } else {
             Utilities.showProgressHUDWithError(error ?? "")
         }

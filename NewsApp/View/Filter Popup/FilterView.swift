@@ -28,6 +28,8 @@ class FilterView: UIView {
     var sources: [SourceModel]?
     var countriesDropDownMenu = MKDropdownMenu()
     var sourcesDropDownMenu = MKDropdownMenu()
+    var selectedCountry = ""
+    var selectedSource = ""
     
     // MARK: - Initializers sFunctions
     override init(frame: CGRect) {
@@ -52,7 +54,6 @@ class FilterView: UIView {
         blurView.addGestureRecognizer(tap)
         
         initUI()
-        initData()
     }
     
     func initUI() {
@@ -73,14 +74,13 @@ class FilterView: UIView {
     }
     
     func initCountriesDropDownMenu() {
-        prepCountriesList()
-        
         countriesDropDownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
         
         countriesDropDownListView.addSubview(countriesDropDownMenu)
         
         countriesDropDownMenu.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(10)
         }
         
         countriesDropDownMenu.delegate = self
@@ -88,18 +88,17 @@ class FilterView: UIView {
     }
     
     func initSourcesDropDownMenu() {
-        //prepSourcesList()
-    }
-    
-    func prepCountriesList() {
-        var countriesList = [String]()
-        countriesList.append("Select Country")
+        sourcesDropDownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: sourcesDropDownListView.frame.size.width, height: sourcesDropDownListView.frame.size.height))
         
-        if let list = countries {
-            countriesList.append(contentsOf: list)
+        sourcesDropDownListView.addSubview(sourcesDropDownMenu)
+        
+        sourcesDropDownMenu.snp.makeConstraints { (make) in
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(10)
         }
         
-        countries = countriesList
+        sourcesDropDownMenu.delegate = self
+        sourcesDropDownMenu.dataSource = self
     }
     
     // MARK: - Outlet Functions
@@ -134,16 +133,46 @@ extension FilterView : MKDropdownMenuDataSource, MKDropdownMenuDelegate {
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
         if dropdownMenu == countriesDropDownMenu {
             return countries?.count ?? 0
+        } else {
+            return sources?.count ?? 0
         }
-        
-        return 0
     }
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForComponent component: Int) -> UIView {
         let cell = FilterListCell(frame: CGRect(x: 0, y: 0, width: dropdownMenu.frame.size.width, height: dropdownMenu.frame.size.height))
-        let name = (dropdownMenu == countriesDropDownMenu) ? countries![component] : ""//sources![component]
+        let name = (dropdownMenu == countriesDropDownMenu) ? "Select Country" : "Select Source"
         cell.setCountryName(name)
         
         return cell
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let cell = FilterListCell(frame: CGRect(x: 0, y: 0, width: dropdownMenu.frame.size.width, height: dropdownMenu.frame.size.height))
+        var name = ""
+        
+        if dropdownMenu == countriesDropDownMenu {
+            if let countriesList = countries {
+                name = countriesList[row]
+            }
+        } else {
+            if let sourcesList = sources {
+                name = sourcesList[row].name ?? ""
+            }
+        }
+        
+        cell.setCountryName(name)
+        return cell
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didSelectRow row: Int, inComponent component: Int) {
+        dropdownMenu.closeAllComponents(animated: true)
+        
+        if dropdownMenu == countriesDropDownMenu {
+            guard let countriesList = countries else { return }
+            selectedCountry = countriesList[row]
+        } else {
+            guard let sourcesList = sources else { return }
+            selectedSource = sourcesList[row].name ?? ""
+        }
     }
 }
