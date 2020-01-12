@@ -21,7 +21,8 @@ class NewsListViewController: UIViewController {
     
     var topHeadlines = [ArticleModel]()
     var filterResult = [ArticleModel]()
-    var sources = [SourcesModel]()
+    var countries: [String]?
+    var sources: [SourceModel]?
     var searchKeyword = ""
     var page = 1
     
@@ -75,8 +76,7 @@ class NewsListViewController: UIViewController {
 //        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: .source, andQuery: searchKeyword)
     }
     
-    // MARK: - Outlet Functions
-    @IBAction func filteButtonPressed(_ sender: Any) {
+    func showFilterView() {
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
         let filterView = FilterView(frame: CGRect(x: 0, y: 0, width: width, height: height))
@@ -84,8 +84,16 @@ class NewsListViewController: UIViewController {
         self.view.addSubview(filterView)
         
         filterView.snp.makeConstraints { (make) in
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
         }
+    }
+    
+    // MARK: - Outlet Functions
+    @IBAction func filteButtonPressed(_ sender: Any) {
+        newsListViewModel.getCountriesList()
+        newsListViewModel.getSourcesList()
+        
+        showFilterView()
     }
 }
 
@@ -163,6 +171,7 @@ extension NewsListViewController : UISearchBarDelegate {
 }
 
 extension NewsListViewController : NewsListViewModelDelegate {
+    
     func setTopHeadlinesList(_ model: TopHeadlinesModel?, _ error: String?) {
         if let topHeadlinesModel = model, let articles = topHeadlinesModel.articles, let total = topHeadlinesModel.totalResults {
             if isFirstTimeLoad {
@@ -213,7 +222,19 @@ extension NewsListViewController : NewsListViewModelDelegate {
 //        }
     }
     
+    func setCountriesList(_ countries: [String]?, _ error: String?) {
+        if let list = countries {
+            self.countries = list
+        } else {
+            Utilities.showProgressHUDWithError(error ?? "")
+        }
+    }
+    
     func setSourcesList(_ model: SourcesModel?, _ error: String?) {
-        
+        if let sourcesModel = model, let list = sourcesModel.sources {
+            self.sources = list
+        } else {
+            Utilities.showProgressHUDWithError(error ?? "")
+        }
     }
 }

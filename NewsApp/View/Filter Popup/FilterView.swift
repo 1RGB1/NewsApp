@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SnapKit
+import MKDropdownMenu
 
 class FilterView: UIView {
 
@@ -24,6 +26,8 @@ class FilterView: UIView {
     // MARK: - Properties
     var countries: [String]?
     var sources: [SourceModel]?
+    var countriesDropDownMenu = MKDropdownMenu()
+    var sourcesDropDownMenu = MKDropdownMenu()
     
     // MARK: - Initializers sFunctions
     override init(frame: CGRect) {
@@ -48,6 +52,7 @@ class FilterView: UIView {
         blurView.addGestureRecognizer(tap)
         
         initUI()
+        initData()
     }
     
     func initUI() {
@@ -56,8 +61,45 @@ class FilterView: UIView {
         contentView.setCornerByValue(cornerRadius: true, value: 40)
         contentView.addShadow(color: UIColor.black, opacity: 0.3, radius: 2)
         
+        countriesDropDownListView.addBorder(color: UIColor.black, width: 2)
+        sourcesDropDownListView.addBorder(color: UIColor.black, width: 2)
         cancelButton.addBorder(color: UIColor.black, width: 2)
         filterButton.addBorder(color: UIColor.black, width: 2)
+    }
+    
+    func initData() {
+        initCountriesDropDownMenu()
+        initSourcesDropDownMenu()
+    }
+    
+    func initCountriesDropDownMenu() {
+        prepCountriesList()
+        
+        countriesDropDownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
+        
+        countriesDropDownListView.addSubview(countriesDropDownMenu)
+        
+        countriesDropDownMenu.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        countriesDropDownMenu.delegate = self
+        countriesDropDownMenu.dataSource = self
+    }
+    
+    func initSourcesDropDownMenu() {
+        //prepSourcesList()
+    }
+    
+    func prepCountriesList() {
+        var countriesList = [String]()
+        countriesList.append("Select Country")
+        
+        if let list = countries {
+            countriesList.append(contentsOf: list)
+        }
+        
+        countries = countriesList
     }
     
     // MARK: - Outlet Functions
@@ -81,5 +123,27 @@ class FilterView: UIView {
     
     func fillSourcesList() {
         
+    }
+}
+
+extension FilterView : MKDropdownMenuDataSource, MKDropdownMenuDelegate {
+    func numberOfComponents(in dropdownMenu: MKDropdownMenu) -> Int {
+        return 1
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
+        if dropdownMenu == countriesDropDownMenu {
+            return countries?.count ?? 0
+        }
+        
+        return 0
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForComponent component: Int) -> UIView {
+        let cell = FilterListCell(frame: CGRect(x: 0, y: 0, width: dropdownMenu.frame.size.width, height: dropdownMenu.frame.size.height))
+        let name = (dropdownMenu == countriesDropDownMenu) ? countries![component] : ""//sources![component]
+        cell.setCountryName(name)
+        
+        return cell
     }
 }

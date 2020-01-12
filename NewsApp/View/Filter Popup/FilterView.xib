@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterView" customModule="NewsApp" customModuleProvider="target">
             <connections>
-                <outlet property="blurView" destination="bi9-dE-S7Q" id="rZ7-jp-Gxm"/>
+                <outlet property="blurView" destination="bi9-dE-S7Q" id="5Te-d4-Xnb"/>
                 <outlet property="cancelButton" destination="fml-8y-Gw9" id="dnD-b9-u6Q"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="oAF-Hc-D6t"/>
                 <outlet property="contentView" destination="fbl-Fj-SzI" id="Da8-aJ-cNT"/>
@@ -30,16 +30,16 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbl-Fj-SzI">
-                    <rect key="frame" x="10" y="320.5" width="394" height="255"/>
+                    <rect key="frame" x="10" y="328" width="394" height="240"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter News By:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mux-MA-I3N">
-                            <rect key="frame" x="15" y="31" width="115" height="20"/>
+                            <rect key="frame" x="15" y="15" width="115" height="20"/>
                             <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87L-BE-R0G" userLabel="Close Filter Button">
-                            <rect key="frame" x="349" y="26" width="30" height="30"/>
+                            <rect key="frame" x="349" y="10" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="PXw-5R-YZ7"/>
                                 <constraint firstAttribute="width" constant="30" id="r2i-vA-Gme"/>
@@ -50,14 +50,14 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4K-Zf-yhl" userLabel="Top Separator View">
-                            <rect key="frame" x="0.0" y="66" width="394" height="1"/>
+                            <rect key="frame" x="0.0" y="50" width="394" height="1"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="2Rz-um-6bL"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b51-Rl-M98" userLabel="Country Radio Button">
-                            <rect key="frame" x="30" y="94.5" width="20" height="20"/>
+                            <rect key="frame" x="30" y="78.5" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="cDz-L6-XfX"/>
                                 <constraint firstAttribute="height" constant="20" id="h4W-Ol-Htu"/>
@@ -65,14 +65,14 @@
                             <state key="normal" image="RadioButtonUnChecked"/>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZt-EF-eSz" userLabel="Country Drop Down List">
-                            <rect key="frame" x="65" y="87" width="299" height="35"/>
-                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="65" y="71" width="299" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="w63-c1-BkR"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qsh-OG-VVj" userLabel="Source Radio Button">
-                            <rect key="frame" x="30" y="144.5" width="20" height="20"/>
+                            <rect key="frame" x="30" y="128.5" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="dkl-cN-DbW"/>
                                 <constraint firstAttribute="height" constant="20" id="ybi-R0-NZ6"/>
@@ -80,21 +80,21 @@
                             <state key="normal" image="RadioButtonUnChecked"/>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyO-jy-Idu" userLabel="Source Drop Down List">
-                            <rect key="frame" x="65" y="137" width="299" height="35"/>
-                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="65" y="121" width="299" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="yKx-kl-3Z8"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26M-rK-56L" userLabel="Bottom Separator View">
-                            <rect key="frame" x="0.0" y="192" width="394" height="1"/>
+                            <rect key="frame" x="0.0" y="176" width="394" height="1"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="XeN-KK-C9k"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fml-8y-Gw9">
-                            <rect key="frame" x="15" y="208" width="70" height="32"/>
+                            <rect key="frame" x="15" y="192" width="70" height="33"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="6Wp-W8-Rvk"/>
                             </constraints>
@@ -107,7 +107,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9a-g6-Stf" userLabel="Filter Button">
-                            <rect key="frame" x="309" y="208" width="70" height="32"/>
+                            <rect key="frame" x="309" y="192" width="70" height="33"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="X6J-OR-i96"/>
                             </constraints>
@@ -131,6 +131,7 @@
                         <constraint firstAttribute="bottom" secondItem="fml-8y-Gw9" secondAttribute="bottom" constant="15" id="JmA-43-dmd"/>
                         <constraint firstItem="fml-8y-Gw9" firstAttribute="leading" secondItem="Mux-MA-I3N" secondAttribute="leading" id="KlL-SE-HHe"/>
                         <constraint firstItem="P9a-g6-Stf" firstAttribute="trailing" secondItem="87L-BE-R0G" secondAttribute="trailing" id="Q18-mq-BG1"/>
+                        <constraint firstItem="Mux-MA-I3N" firstAttribute="top" secondItem="fbl-Fj-SzI" secondAttribute="top" constant="15" id="S5d-4g-g9e"/>
                         <constraint firstAttribute="trailing" secondItem="eZt-EF-eSz" secondAttribute="trailing" constant="30" id="W8Q-p5-ymD"/>
                         <constraint firstAttribute="trailing" secondItem="87L-BE-R0G" secondAttribute="trailing" constant="15" id="WnE-lL-J2a"/>
                         <constraint firstItem="P9a-g6-Stf" firstAttribute="top" secondItem="fml-8y-Gw9" secondAttribute="top" id="YWb-93-uEW"/>
@@ -145,7 +146,7 @@
                         <constraint firstItem="eZt-EF-eSz" firstAttribute="top" secondItem="Z4K-Zf-yhl" secondAttribute="bottom" constant="20" id="nla-tX-ggC"/>
                         <constraint firstItem="Z4K-Zf-yhl" firstAttribute="leading" secondItem="fbl-Fj-SzI" secondAttribute="leading" id="o4T-WF-pAR"/>
                         <constraint firstItem="Qsh-OG-VVj" firstAttribute="trailing" secondItem="b51-Rl-M98" secondAttribute="trailing" id="pv8-B1-Ha9"/>
-                        <constraint firstAttribute="height" constant="255" id="q2f-SV-S99"/>
+                        <constraint firstAttribute="height" constant="240" id="q2f-SV-S99"/>
                         <constraint firstItem="87L-BE-R0G" firstAttribute="centerY" secondItem="Mux-MA-I3N" secondAttribute="centerY" id="rIS-fZ-qGY"/>
                         <constraint firstItem="dyO-jy-Idu" firstAttribute="leading" secondItem="eZt-EF-eSz" secondAttribute="leading" id="vtz-ra-SzO"/>
                         <constraint firstItem="Z4K-Zf-yhl" firstAttribute="top" secondItem="Mux-MA-I3N" secondAttribute="bottom" constant="15" id="zoF-sM-C7v"/>
