@@ -85,7 +85,6 @@
                                             <outlet property="headlineDateLabel" destination="Prh-Qk-cQM" id="s3Y-dc-Tkc"/>
                                             <outlet property="headlineLogoImageView" destination="4Vn-YN-aui" id="ibX-vi-pJs"/>
                                             <outlet property="headlineTitleLabel" destination="Mvz-RB-6VX" id="Ww3-n4-pfI"/>
-                                            <segue destination="FXh-Mc-4D0" kind="show" identifier="showArticleDetailsSegue" id="jjW-n7-U9X"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -128,10 +127,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZn-ig-KV5">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDp-Rb-95a">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="165"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNA-1f-GQt">
                                                 <rect key="frame" x="20" y="20" width="374" height="22.5"/>
@@ -140,19 +139,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DE5-Gx-kZ4">
-                                                <rect key="frame" x="20" y="47.5" width="374" height="18"/>
-                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="20" y="52.5" width="374" height="17"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.7091984160958904" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mby-6r-uHg">
-                                                <rect key="frame" x="20" y="85.5" width="374" height="22.5"/>
+                                                <rect key="frame" x="20" y="94.5" width="374" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source URL" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEf-ng-n2x">
-                                                <rect key="frame" x="20" y="128" width="374" height="17"/>
+                                                <rect key="frame" x="20" y="142" width="374" height="17"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -161,13 +160,13 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="aNA-1f-GQt" firstAttribute="top" secondItem="tDp-Rb-95a" secondAttribute="top" constant="20" id="3DP-aZ-abu"/>
-                                            <constraint firstItem="DE5-Gx-kZ4" firstAttribute="top" secondItem="aNA-1f-GQt" secondAttribute="bottom" constant="5" id="8zZ-fk-Rsk"/>
+                                            <constraint firstItem="DE5-Gx-kZ4" firstAttribute="top" secondItem="aNA-1f-GQt" secondAttribute="bottom" constant="10" id="8zZ-fk-Rsk"/>
                                             <constraint firstItem="tEf-ng-n2x" firstAttribute="trailing" secondItem="Mby-6r-uHg" secondAttribute="trailing" id="DPz-da-Ru8"/>
-                                            <constraint firstItem="Mby-6r-uHg" firstAttribute="top" secondItem="DE5-Gx-kZ4" secondAttribute="bottom" constant="20" id="GIm-vA-2dL"/>
+                                            <constraint firstItem="Mby-6r-uHg" firstAttribute="top" secondItem="DE5-Gx-kZ4" secondAttribute="bottom" constant="25" id="GIm-vA-2dL"/>
                                             <constraint firstItem="DE5-Gx-kZ4" firstAttribute="leading" secondItem="aNA-1f-GQt" secondAttribute="leading" id="Gjd-40-ODw"/>
                                             <constraint firstItem="Mby-6r-uHg" firstAttribute="trailing" secondItem="aNA-1f-GQt" secondAttribute="trailing" id="M21-ga-Vbg"/>
                                             <constraint firstItem="DE5-Gx-kZ4" firstAttribute="trailing" secondItem="aNA-1f-GQt" secondAttribute="trailing" id="M4h-dP-hfK"/>
-                                            <constraint firstItem="tEf-ng-n2x" firstAttribute="top" secondItem="Mby-6r-uHg" secondAttribute="bottom" constant="20" id="P2e-N1-8QR"/>
+                                            <constraint firstItem="tEf-ng-n2x" firstAttribute="top" secondItem="Mby-6r-uHg" secondAttribute="bottom" constant="25" id="P2e-N1-8QR"/>
                                             <constraint firstItem="aNA-1f-GQt" firstAttribute="leading" secondItem="tDp-Rb-95a" secondAttribute="leading" constant="20" id="Thn-HT-jnE"/>
                                             <constraint firstItem="tEf-ng-n2x" firstAttribute="leading" secondItem="Mby-6r-uHg" secondAttribute="leading" id="an9-hJ-4ug"/>
                                             <constraint firstAttribute="trailing" secondItem="aNA-1f-GQt" secondAttribute="trailing" constant="20" id="heB-qm-EaY"/>

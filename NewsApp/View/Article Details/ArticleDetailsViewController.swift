@@ -11,10 +11,10 @@ import UIKit
 class ArticleDetailsViewController: UIViewController {
 
     // MARK: - Outlets
-    @IBOutlet weak var articleTitleLabel: UILabel!
-    @IBOutlet weak var articleAuthorLabel: UILabel!
-    @IBOutlet weak var articleDescriptionLabel: UILabel!
-    @IBOutlet weak var articleSourceURLLabel: UILabel!
+    @IBOutlet weak private var articleTitleLabel: UILabel!
+    @IBOutlet weak private var articleAuthorLabel: UILabel!
+    @IBOutlet weak private var articleDescriptionLabel: UILabel!
+    @IBOutlet weak private var articleSourceURLLabel: UILabel!
     
     // MARK: - Properties
     var article: ArticleModel?
@@ -42,13 +42,30 @@ class ArticleDetailsViewController: UIViewController {
     func setDetails() {
         if let articleModel = article {
             
-            articleTitleLabel.text = articleModel.title ?? "N/A"
+            if let title = articleModel.title, title != "" {
+                articleTitleLabel.text = title
+            } else {
+                articleTitleLabel.text = "Title: N/A"
+            }
+
+            if let author = articleModel.author, author != "" {
+                articleAuthorLabel.text = "By: \(author)"
+            } else {
+                articleAuthorLabel.text = "By: N/A"
+            }
+
+            if let description = articleModel.description, description != "" {
+                articleDescriptionLabel.text = description
+            } else {
+                articleDescriptionLabel.text = "No description available"
+            }
             
-            articleAuthorLabel.text = "By: \(articleModel.author ?? "N/A")"
-            
-            articleDescriptionLabel.text = articleModel.description ?? "N/A"
-            
-            articleSourceURLLabel.text = "Source URL: \(articleModel.url ?? "N/A")"
+            if let url = articleModel.url, url != "" {
+                articleSourceURLLabel.text = "Source URL: \(url)"
+            } else {
+                articleSourceURLLabel.text = "Source URL: N/A"
+            }
+
         }
     }
 }
