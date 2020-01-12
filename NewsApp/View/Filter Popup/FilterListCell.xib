@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterListCell" customModule="NewsApp" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="iN0-l3-epB" id="IcP-g5-wUh"/>
+                <outlet property="countryNameLabel" destination="nuE-aK-P2d" id="o7n-H0-67V"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="174" height="34"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuE-aK-P2d">
+                    <rect key="frame" x="10" y="10" width="119" height="14"/>
+                    <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Gat-bC-G5x">
+                    <rect key="frame" x="149" y="9.5" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="TMb-3K-gan"/>
+                        <constraint firstAttribute="width" constant="15" id="ubG-qC-dGu"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="nuE-aK-P2d" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="00Y-gf-hQk"/>
+                <constraint firstItem="nuE-aK-P2d" firstAttribute="centerY" secondItem="Gat-bC-G5x" secondAttribute="centerY" id="5NN-9o-Suj"/>
+                <constraint firstItem="Gat-bC-G5x" firstAttribute="leading" relation="lessThanOrEqual" secondItem="nuE-aK-P2d" secondAttribute="trailing" constant="20" id="658-Mk-DIc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nuE-aK-P2d" secondAttribute="bottom" constant="10" id="6Ci-Uv-ZJU"/>
+                <constraint firstItem="nuE-aK-P2d" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="rng-On-7fH"/>
+                <constraint firstAttribute="trailing" secondItem="Gat-bC-G5x" secondAttribute="trailing" constant="10" id="yiv-Z1-2jV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-307.24637681159425" y="-111.16071428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="DownArrow" width="48" height="48"/>
+    </resources>
+</document>
