@@ -41,7 +41,7 @@ class NewsListViewController: UIViewController {
     
     // MARK: - Functions
     func setTitle() {
-        self.title = "News App"
+        self.title = "News"
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.font: UIFont(name: "TimesNewRomanPS-BoldMT", size: 20)!]
     }
