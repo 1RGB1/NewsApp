@@ -31,6 +31,21 @@ class NewsStore: BaseNetwork {
         }
     }
     
+    func getCountriesWithCompletion(_ completion: @escaping (_ model: [String]?, _ error: String?) -> ()) {
+        var countries: [String]?
+        
+        if  let path = Bundle.main.path(forResource: "Countries", ofType: "plist"),
+            let xml = FileManager.default.contents(atPath: path) {
+            
+            do {
+                countries = try PropertyListSerialization.propertyList(from: xml, options: .mutableContainersAndLeaves, format: nil) as? [String]
+                completion(countries, nil)
+            } catch {
+                completion(nil, error.localizedDescription)
+            }
+        }
+    }
+    
     func getSourcesWithParameters(_ params: [String : AnyHashable], andCompletionHandler completion: @escaping (_ model: SourcesModel?, _ error: String?) -> ()) {
         
         NetworkManager.performNetworkActivityWithURL(SOURCES_URL, Parameters: params, HTTPMethod: GET) { (response) in

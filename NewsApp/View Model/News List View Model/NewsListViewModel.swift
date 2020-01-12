@@ -11,6 +11,7 @@ import Foundation
 protocol NewsListViewModelDelegate {
     func setTopHeadlinesList(_ model: TopHeadlinesModel?, _ error: String?)
     func setFilteredList(_ model: TopHeadlinesModel?, _ error: String?)
+    func setCountriesList(_ countries: [String]?, _ error: String?)
     func setSourcesList(_ model: SourcesModel?, _ error: String?)
 }
 
@@ -53,7 +54,18 @@ class NewsListViewModel {
         }
     }
     
-    func getSources() {
+    func getCountriesList() {
+        
+        newsStore.getCountriesWithCompletion { [weak self] (countries, error) in
+            if error == nil {
+                self?.delegate.setCountriesList(countries, nil)
+            } else {
+                self?.delegate.setCountriesList(nil, error)
+            }
+        }
+    }
+    
+    func getSourcesList() {
         
         let params: [String : AnyHashable] = ["apiKey" : API_KEY]
         

@@ -31,6 +31,9 @@
 		E0F05D2123C7524100386CB0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05D2023C7524100386CB0 /* StringExtension.swift */; };
 		E0F05D2323CB272900386CB0 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05D2223CB272900386CB0 /* FilterView.swift */; };
 		E0F05D2523CB274D00386CB0 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0F05D2423CB274D00386CB0 /* FilterView.xib */; };
+		E0F05D2D23CB766E00386CB0 /* Countries.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0F05D2C23CB766E00386CB0 /* Countries.plist */; };
+		E0F05D2F23CB7E0D00386CB0 /* FilterListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0F05D2E23CB7E0D00386CB0 /* FilterListCell.xib */; };
+		E0F05D3123CB801700386CB0 /* FilterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05D3023CB801700386CB0 /* FilterListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,9 @@
 		E0F05D2023C7524100386CB0 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E0F05D2223CB272900386CB0 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		E0F05D2423CB274D00386CB0 /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
+		E0F05D2C23CB766E00386CB0 /* Countries.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Countries.plist; sourceTree = "<group>"; };
+		E0F05D2E23CB7E0D00386CB0 /* FilterListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterListCell.xib; sourceTree = "<group>"; };
+		E0F05D3023CB801700386CB0 /* FilterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				E0F05CCA23C5D22C00386CB0 /* Assets.xcassets */,
+				E0F05D2C23CB766E00386CB0 /* Countries.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -184,6 +191,8 @@
 			children = (
 				E0F05D2223CB272900386CB0 /* FilterView.swift */,
 				E0F05D2423CB274D00386CB0 /* FilterView.xib */,
+				E0F05D3023CB801700386CB0 /* FilterListCell.swift */,
+				E0F05D2E23CB7E0D00386CB0 /* FilterListCell.xib */,
 			);
 			path = "Filter Popup";
 			sourceTree = "<group>";
@@ -325,7 +334,9 @@
 				E0F05D2523CB274D00386CB0 /* FilterView.xib in Resources */,
 				E0F05CCE23C5D22C00386CB0 /* LaunchScreen.storyboard in Resources */,
 				E0F05CCB23C5D22C00386CB0 /* Assets.xcassets in Resources */,
+				E0F05D2D23CB766E00386CB0 /* Countries.plist in Resources */,
 				E0F05CC923C5D22B00386CB0 /* Main.storyboard in Resources */,
+				E0F05D2F23CB7E0D00386CB0 /* FilterListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +398,7 @@
 				E0F05CEA23C5F23200386CB0 /* BaseNetwork.swift in Sources */,
 				E0F05CC223C5D22B00386CB0 /* AppDelegate.swift in Sources */,
 				E0F05D1F23C748C000386CB0 /* HeadlineTableViewCell.swift in Sources */,
+				E0F05D3123CB801700386CB0 /* FilterListCell.swift in Sources */,
 				E0F05CE923C5F23200386CB0 /* NetworkManager.swift in Sources */,
 				E0F05CEC23C5FFAB00386CB0 /* BaseModel.swift in Sources */,
 				E0F05CF923C605E600386CB0 /* NewsListViewModel.swift in Sources */,
