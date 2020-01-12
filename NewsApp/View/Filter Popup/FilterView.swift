@@ -112,6 +112,9 @@ class FilterView: UIView {
     // MARK: - Functions
     @objc
     func closeView() {
+        countriesDropDownMenu.closeAllComponents(animated: true)
+        sourcesDropDownMenu.closeAllComponents(animated: true)
+        
         blurView.removeBlurEffect()
         removeFromSuperview()
     }
