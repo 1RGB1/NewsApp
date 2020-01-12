@@ -7,7 +7,7 @@ target 'NewsApp' do
 
   # Pods for NewsApp
   pod 'Alamofire'
-  pod 'DropDown'
+  pod 'MKDropdownMenu'
   pod 'SnapKit'
   pod 'ObjectMapper'
   pod 'SVPullToRefreshImprove'
