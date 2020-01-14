@@ -19,6 +19,7 @@ class NewsListViewController: UIViewController {
     
     // MARK: - Properties
     let newsListViewModel = NewsListViewModel()
+    let filterPopupViewModel = FilterPopupViewModel()
     var topHeadlines = [ArticleModel]()
     var filterResult = [ArticleModel]()
     var filterView: FilterView?
@@ -37,6 +38,7 @@ class NewsListViewController: UIViewController {
         initUI()
         
         newsListViewModel.delegate = self
+        filterPopupViewModel.delegate = self
         
         initTableView()
         getTopHeadlines()
@@ -80,7 +82,7 @@ class NewsListViewController: UIViewController {
     
         newsListViewModel.getTopHeadlinesListWithPage(page)
     }
-    
+
     func getFilteredHeadlines() {
         newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: filterQuery, andQuery: query)
     }
@@ -102,10 +104,22 @@ class NewsListViewController: UIViewController {
         filterView!.initData()
     }
     
+    func handleNoDataFound(showNoData: Bool) {
+        if showNoData {
+            noDataFoundLabel.isHidden = false
+            noDataFoundLabel.text = "No Data Found"
+            newsListTableView.isHidden = true
+        } else {
+            noDataFoundLabel.isHidden = true
+            noDataFoundLabel.text = ""
+            newsListTableView.isHidden = false
+        }
+    }
+    
     // MARK: - Outlet Functions
     @IBAction func filteButtonPressed(_ sender: Any) {
-        newsListViewModel.getCountriesList()
-        newsListViewModel.getSourcesList()
+        filterPopupViewModel.getCountriesList()
+        filterPopupViewModel.getSourcesList()
     }
 }
 
@@ -118,28 +132,7 @@ extension NewsListViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
-        var count = 0
-        
-        if isInFilterMode {
-            count = filterResult.count
-        } else {
-            count = topHeadlines.count
-        }
-        
-        if count == 0 {
-            noDataFoundLabel.isHidden = false
-            if !isFirstTimeLoad {
-                noDataFoundLabel.text = "No Data Found"
-            }
-            newsListTableView.isHidden = true
-        } else {
-            noDataFoundLabel.isHidden = true
-            noDataFoundLabel.text = ""
-            newsListTableView.isHidden = false
-        }
-        
-        return count
+        return isInFilterMode ? filterResult.count : topHeadlines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -167,7 +160,17 @@ extension NewsListViewController : UITableViewDataSource, UITableViewDelegate {
 extension NewsListViewController : NewsListViewModelDelegate {
     
     func setTopHeadlinesList(_ model: TopHeadlinesModel?, forHeadlinesType type: Headlines, _ error: String?) {
-        if let topHeadlinesModel = model, let articles = topHeadlinesModel.articles, let total = topHeadlinesModel.totalResults {
+        if let topHeadlinesModel = model, let articles = topHeadlinesModel.articles {
+            if articles.count == 0 {
+                if page == 1 {
+                    handleNoDataFound(showNoData: true)
+                } else {
+                    handleNoDataFound(showNoData: false)
+                }
+            } else {
+                handleNoDataFound(showNoData: false)
+            }
+            
             if isFirstTimeLoad {
                 Utilities.showProgressHUDWithSuccess("Success")
                 isFirstTimeLoad = false
@@ -183,8 +186,17 @@ extension NewsListViewController : NewsListViewModelDelegate {
             page += 1
             
             newsListTableView.reloadData()
-            newsListTableView.showsInfiniteScrolling = (page <= total)
+            
+            if let total = topHeadlinesModel.totalResults {
+                newsListTableView.showsInfiniteScrolling = (page <= total)
+            }
         } else {
+            if page == 1 {
+                handleNoDataFound(showNoData: true)
+            } else {
+                handleNoDataFound(showNoData: false)
+            }
+            
             if isFirstTimeLoad {
                 Utilities.showProgressHUDWithError(error ?? "")
                 isFirstTimeLoad = false
@@ -194,6 +206,10 @@ extension NewsListViewController : NewsListViewModelDelegate {
             newsListTableView.showsInfiniteScrolling = false
         }
     }
+}
+
+// Filter Popup View Model Delegate
+extension NewsListViewController : FilterPopupViewModelDelegate {
     
     func setCountriesList(_ countries: [String]?, _ error: String?) {
         if let list = countries {
@@ -215,7 +231,10 @@ extension NewsListViewController : NewsListViewModelDelegate {
 
 // Filter View Delegate
 extension NewsListViewController : FilterViewDelegate {
+    
     func filterByQuery(_ filterQuery: FilterQuery, andFilterString query: String) {
+        
+        Utilities.showProgressHUD()
         page = 1
         self.filterQuery = filterQuery
         self.query = query
@@ -223,6 +242,7 @@ extension NewsListViewController : FilterViewDelegate {
         isInFilterMode = true
         filterButton.isEnabled = true
         filterResult.removeAll()
+        newsListTableView.reloadData()
         
         if filterQuery == .none {
             return
