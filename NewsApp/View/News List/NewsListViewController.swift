@@ -110,6 +110,7 @@ class NewsListViewController: UIViewController {
 }
 
 // MARK: Extensions
+// Table View Delegate and DataSource
 extension NewsListViewController : UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -162,7 +163,6 @@ extension NewsListViewController : UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-// MARK: - Extensions
 // News List Delegate
 extension NewsListViewController : NewsListViewModelDelegate {
     

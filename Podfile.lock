@@ -1,19 +1,21 @@
 PODS:
   - Alamofire (4.9.1)
+  - iOSDropDown (0.3.4)
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
-  - MKDropdownMenu (1.4)
   - ObjectMapper (3.5.1)
+  - SkeletonView (1.8.2)
   - SnapKit (5.0.1)
   - SVProgressHUD (2.2.5)
   - SVPullToRefreshImprove (0.5)
 
 DEPENDENCIES:
   - Alamofire
+  - iOSDropDown
   - Kingfisher
-  - MKDropdownMenu
   - ObjectMapper
+  - SkeletonView
   - SnapKit
   - SVProgressHUD
   - SVPullToRefreshImprove
@@ -21,22 +23,24 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - iOSDropDown
     - Kingfisher
-    - MKDropdownMenu
     - ObjectMapper
+    - SkeletonView
     - SnapKit
     - SVProgressHUD
     - SVPullToRefreshImprove
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
-  MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  SkeletonView: bb27c39857e5492136f02ee8a3aa78de55d12ecd
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SVPullToRefreshImprove: 5b0760edd107d6ef96c7e09c86fe2d67f6c842a5
 
-PODFILE CHECKSUM: d93395ba736c3b430a59b08f3a070bf222912cb3
+PODFILE CHECKSUM: da5b461e7e9830c8307a44cd1d995c2fdae1312d
 
 COCOAPODS: 1.8.4
