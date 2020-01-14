@@ -17,7 +17,7 @@ let POST: HTTPMethod = HTTPMethod.post
 let PUT: HTTPMethod = HTTPMethod.put
 
 // API Key
-let API_KEY: String = "267ceaf325a9437eae27a460b05d5484"
+let API_KEY: String = "d74670317e864730a762e797291ec0aa"
 
 // Other URL Configurations
 let ENGLISH: String = "en-US"
