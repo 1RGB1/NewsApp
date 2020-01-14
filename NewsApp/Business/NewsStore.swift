@@ -10,7 +10,7 @@ import ObjectMapper
 
 class NewsStore: BaseNetwork {
     
-    func getTopHeadlinesListWithParameters(_ params: [String : AnyHashable], headlinesType: HEADLINES, andCompletionHandler completion: @escaping (_ model: TopHeadlinesModel?, _ error: String?) -> ()) {
+    func getTopHeadlinesListWithParameters(_ params: [String : AnyHashable], headlinesType: Headlines, andCompletionHandler completion: @escaping (_ model: TopHeadlinesModel?, _ error: String?) -> ()) {
         
         let url = ((headlinesType == .everything) ? NEWS_LIST_URL : FILTER_URL)
         
