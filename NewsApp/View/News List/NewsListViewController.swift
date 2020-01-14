@@ -18,13 +18,13 @@ class NewsListViewController: UIViewController {
     
     // MARK: - Properties
     let newsListViewModel = NewsListViewModel()
-    
     var topHeadlines = [ArticleModel]()
     var filterResult = [ArticleModel]()
     var countries: [String]?
     var sources: [SourceModel]?
-    var searchKeyword = ""
     var page = 1
+    var filterQuery: FilterQuery = .country
+    var query = "us"
     
     var isFirstTimeLoad = true
     var isInFilterMode = false
@@ -73,7 +73,7 @@ class NewsListViewController: UIViewController {
     }
     
     func getFilteredHeadlines() {
-//        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: .source, andQuery: searchKeyword)
+        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: filterQuery, andQuery: query)
     }
     
     func showFilterView() {
@@ -83,6 +83,7 @@ class NewsListViewController: UIViewController {
         
         filterView.countries = self.countries
         filterView.sources = self.sources
+        filterView.delegate = self
         
         self.view.addSubview(filterView)
         
@@ -153,29 +154,11 @@ extension NewsListViewController : UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension NewsListViewController : UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        handleLoadMore()
-//        searchResult.removeAll()
-//        searchPage = 1
-//        maxSearchPages = 1
-//
-//        if searchText.count >= 4 {
-//            isInSearchMode = true
-//            searchKeyword = searchText
-//            movieListViewModel.getMoviesBySearchWith(searchPage, andKeyword: searchKeyword)
-//            moviesListTableView.separatorStyle = .singleLine
-//        } else {
-//            isInSearchMode = false
-//            moviesListTableView.separatorStyle = .none
-//            moviesListTableView.reloadData()
-//        }
-//    }
-}
-
+// MARK: - Extensions
+// News List Delegate
 extension NewsListViewController : NewsListViewModelDelegate {
     
-    func setTopHeadlinesList(_ model: TopHeadlinesModel?, _ error: String?) {
+    func setTopHeadlinesList(_ model: TopHeadlinesModel?, forHeadlinesType type: Headlines, _ error: String?) {
         if let topHeadlinesModel = model, let articles = topHeadlinesModel.articles, let total = topHeadlinesModel.totalResults {
             if isFirstTimeLoad {
                 Utilities.showProgressHUDWithSuccess("Success")
@@ -184,7 +167,11 @@ extension NewsListViewController : NewsListViewModelDelegate {
             
             newsListTableView.infiniteScrollingView.stopAnimating()
             
-            topHeadlines.append(contentsOf: articles)
+            if type == .everything {
+                topHeadlines.append(contentsOf: articles)
+            } else {
+                filterResult.append(contentsOf: articles)
+            }
             page += 1
             
             newsListTableView.reloadData()
@@ -198,31 +185,6 @@ extension NewsListViewController : NewsListViewModelDelegate {
             newsListTableView.infiniteScrollingView.stopAnimating()
             newsListTableView.showsInfiniteScrolling = false
         }
-    }
-    
-    func setFilteredList(_ model: TopHeadlinesModel?, _ error: String?) {
-//        if let topHeadlinesModel = model, let articles = topHeadlinesModel.articles, let total = topHeadlinesModel.totalResults {
-//            if isFirstTimeLoad {
-//                Utilities.showProgressHUDWithSuccess("Success")
-//                isFirstTimeLoad = false
-//            }
-//            
-//            newsListTableView.infiniteScrollingView.stopAnimating()
-//            
-//            filterResult.append(contentsOf: articles)
-//            page += 1
-//            
-//            newsListTableView.reloadData()
-//            newsListTableView.showsInfiniteScrolling = (page <= total)
-//        } else {
-//            if isFirstTimeLoad {
-//                Utilities.showProgressHUDWithError(error ?? "")
-//                isFirstTimeLoad = false
-//            }
-//            
-//            newsListTableView.infiniteScrollingView.stopAnimating()
-//            newsListTableView.showsInfiniteScrolling = false
-//        }
     }
     
     func setCountriesList(_ countries: [String]?, _ error: String?) {
@@ -240,5 +202,19 @@ extension NewsListViewController : NewsListViewModelDelegate {
         } else {
             Utilities.showProgressHUDWithError(error ?? "")
         }
+    }
+}
+
+// Filter View Delegate
+extension NewsListViewController : FilterViewDelegate {
+    func filterByQuery(_ filterQuery: FilterQuery, andFilterString query: String) {
+        page = 1
+        self.filterQuery = filterQuery
+        self.query = query
+        isFirstTimeLoad = true
+        isInFilterMode = true
+        filterResult.removeAll()
+        
+        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: filterQuery, andQuery: query)
     }
 }

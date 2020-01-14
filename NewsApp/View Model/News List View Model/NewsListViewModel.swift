@@ -9,8 +9,7 @@
 import Foundation
 
 protocol NewsListViewModelDelegate {
-    func setTopHeadlinesList(_ model: TopHeadlinesModel?, _ error: String?)
-    func setFilteredList(_ model: TopHeadlinesModel?, _ error: String?)
+    func setTopHeadlinesList(_ model: TopHeadlinesModel?, forHeadlinesType type: Headlines, _ error: String?)
     func setCountriesList(_ countries: [String]?, _ error: String?)
     func setSourcesList(_ model: SourcesModel?, _ error: String?)
 }
@@ -30,14 +29,14 @@ class NewsListViewModel {
         
         newsStore.getTopHeadlinesListWithParameters(params, headlinesType: .everything) { [weak self] (topHeadlinesModel, error) in
             if error == nil {
-                self?.delegate.setTopHeadlinesList(topHeadlinesModel, nil)
+                self?.delegate.setTopHeadlinesList(topHeadlinesModel, forHeadlinesType: .everything, nil)
             } else {
-                self?.delegate.setTopHeadlinesList(nil, error)
+                self?.delegate.setTopHeadlinesList(nil, forHeadlinesType: .everything, error)
             }
         }
     }
     
-    func getFilteredHeadlinesByPage(_ page: Int, andFilterQuery filterQuery: FILTER_QUERY, andQuery query: String) {
+    func getFilteredHeadlinesByPage(_ page: Int, andFilterQuery filterQuery: FilterQuery, andQuery query: String) {
         
         let filterBy = ((filterQuery == .source) ? "source" : "country")
         
@@ -47,9 +46,9 @@ class NewsListViewModel {
         
         newsStore.getTopHeadlinesListWithParameters(params, headlinesType: .filtered) { [weak self] (topHeadlinesModel, error) in
             if error == nil {
-                self?.delegate.setTopHeadlinesList(topHeadlinesModel, nil)
+                self?.delegate.setTopHeadlinesList(topHeadlinesModel, forHeadlinesType: .filtered, nil)
             } else {
-                self?.delegate.setTopHeadlinesList(nil, error)
+                self?.delegate.setTopHeadlinesList(nil, forHeadlinesType: .filtered, error)
             }
         }
     }
