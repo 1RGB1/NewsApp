@@ -13,6 +13,7 @@ import MKDropdownMenu
 protocol FilterViewDelegate {
     func filterByQuery(_ filterQuery: FilterQuery, andFilterString query: String)
     func cancleFilter()
+    func filterClosed()
 }
 
 class FilterView: UIView {
@@ -56,7 +57,9 @@ class FilterView: UIView {
         addSubview(containerView)
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
+    }
+    
+    func configure() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeView))
         blurView.addGestureRecognizer(tap)
         
@@ -160,6 +163,7 @@ class FilterView: UIView {
         sourcesDropDownMenu.closeAllComponents(animated: true)
         
         blurView.removeBlurEffect()
+        delegate?.filterClosed()
         removeFromSuperview()
     }
 }

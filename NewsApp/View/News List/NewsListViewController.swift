@@ -15,6 +15,7 @@ class NewsListViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var newsListTableView: UITableView!
     @IBOutlet weak var noDataFoundLabel: UILabel!
+    @IBOutlet weak var filterButton: UIBarButtonItem!
     
     // MARK: - Properties
     let newsListViewModel = NewsListViewModel()
@@ -33,7 +34,7 @@ class NewsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTitle()
+        initUI()
         
         newsListViewModel.delegate = self
         
@@ -42,6 +43,14 @@ class NewsListViewController: UIViewController {
     }
     
     // MARK: - Functions
+    func initUI() {
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        filterView = FilterView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        setTitle()
+    }
+    
     func setTitle() {
         self.title = "News"
         self.navigationController?.navigationBar.titleTextAttributes =
@@ -77,14 +86,8 @@ class NewsListViewController: UIViewController {
     }
     
     func showFilterView() {
-        if filterView != nil {
-            return
-        }
         
-        let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height
-        filterView = FilterView(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        
+        filterButton.isEnabled = false
         filterView!.countries = self.countries
         filterView!.sources = self.sources
         filterView!.delegate = self
@@ -95,6 +98,7 @@ class NewsListViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
+        filterView!.configure()
         filterView!.initData()
     }
     
@@ -217,8 +221,8 @@ extension NewsListViewController : FilterViewDelegate {
         self.query = query
         isFirstTimeLoad = true
         isInFilterMode = true
+        filterButton.isEnabled = true
         filterResult.removeAll()
-        filterView = nil
         
         if filterQuery == .none {
             return
@@ -231,7 +235,11 @@ extension NewsListViewController : FilterViewDelegate {
         page = 2
         filterQuery = .none
         isInFilterMode = false
-        filterView = nil
+        filterButton.isEnabled = true
         newsListTableView.reloadData()
+    }
+    
+    func filterClosed() {
+        filterButton.isEnabled = true
     }
 }

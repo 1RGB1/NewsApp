@@ -110,6 +110,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="filterButton" destination="4ZC-ab-rCZ" id="Iyv-kc-trC"/>
                         <outlet property="newsListTableView" destination="Idh-TW-vfg" id="NpG-oT-8T4"/>
                         <outlet property="noDataFoundLabel" destination="Ieo-8s-oZe" id="iAg-ZO-Kyh"/>
                     </connections>
