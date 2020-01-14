@@ -89,8 +89,8 @@ class FilterView: UIView {
         countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
         countriesDropDownMenu.removeFromSuperview()
         countriesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
-        countriesDropDownMenu.isEnabled = true
         countriesDropDownMenu.text = "Select Country"
+        countriesDropDownMenu.delegate = self
         countriesDropDownMenu.listHeight = 200
         countriesDropDownMenu.optionArray = countriesList
         countriesDropDownMenu.didSelect { [weak self] (selectedCountry, index, id) in
@@ -115,9 +115,9 @@ class FilterView: UIView {
         
         sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
         sourcesDropDownMenu.removeFromSuperview()
-        sourcesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
-        sourcesDropDownMenu.isEnabled = false
+        sourcesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: sourcesDropDownListView.frame.size.width, height: sourcesDropDownListView.frame.size.height))
         sourcesDropDownMenu.text = "Select Source"
+        sourcesDropDownMenu.delegate = self
         sourcesDropDownMenu.listHeight = 200
         sourcesDropDownMenu.optionArray = getSourcesNames(sourcesList)
         sourcesDropDownMenu.didSelect { [weak self] (selectedSource, index, id) in
@@ -198,5 +198,12 @@ class FilterView: UIView {
     func closeView() {
         blurView.removeBlurEffect()
         removeFromSuperview()
+    }
+}
+
+// UITextField
+extension FilterView : UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return false
     }
 }
