@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import MKDropdownMenu
+import iOSDropDown
 
 protocol FilterViewDelegate {
     func filterByQuery(_ filterQuery: FilterQuery, andFilterString query: String)
@@ -33,10 +33,10 @@ class FilterView: UIView {
     var delegate: FilterViewDelegate?
     var countries: [String]?
     var sources: [SourceModel]?
-    var countriesDropDownMenu = MKDropdownMenu()
-    var sourcesDropDownMenu = MKDropdownMenu()
     var selectedCountry = ""
     var selectedSource = ""
+    var countriesDropDownMenu = DropDown()
+    var sourcesDropDownMenu = DropDown()
     
     // MARK: - Initializers sFunctions
     override init(frame: CGRect) {
@@ -81,31 +81,61 @@ class FilterView: UIView {
     }
     
     func initCountriesDropDownMenu() {
-        countriesDropDownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
+        
+        guard let countriesList = countries else { return }
+
+        countriesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
+        countriesDropDownMenu.text = "Select Country"
+        countriesDropDownMenu.optionArray = countriesList
+        countriesDropDownMenu.didSelect { [weak self] (selectedCountry, index, id) in
+            self?.selectedCountry = selectedCountry
+            self?.countryRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
+            self?.sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+            self?.sourcesDropDownMenu.text = "Select Source"
+        }
         
         countriesDropDownListView.addSubview(countriesDropDownMenu)
         
         countriesDropDownMenu.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(10)
+
         }
-        
-        countriesDropDownMenu.delegate = self
-        countriesDropDownMenu.dataSource = self
     }
     
     func initSourcesDropDownMenu() {
-        sourcesDropDownMenu = MKDropdownMenu(frame: CGRect(x: 0, y: 0, width: sourcesDropDownListView.frame.size.width, height: sourcesDropDownListView.frame.size.height))
+        
+        guard let sourcesList = sources else { return }
+        
+        sourcesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
+        sourcesDropDownMenu.text = "Select Source"
+        sourcesDropDownMenu.optionArray = getSourcesNames(sourcesList)
+        sourcesDropDownMenu.didSelect { [weak self] (selectedSource, index, id) in
+            self?.selectedSource = selectedSource
+            self?.sourceRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
+            self?.countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+            self?.countriesDropDownMenu.text = "Select County"
+        }
         
         sourcesDropDownListView.addSubview(sourcesDropDownMenu)
         
         sourcesDropDownMenu.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(10)
+
+        }
+    }
+    
+    func getSourcesNames(_ sources: [SourceModel]) -> [String] {
+        var result = [String]()
+        
+        for source in sources {
+            if let name = source.name {
+                result.append(name)
+            }
         }
         
-        sourcesDropDownMenu.delegate = self
-        sourcesDropDownMenu.dataSource = self
+        return result
     }
     
     // MARK: - Outlet Functions
@@ -114,10 +144,12 @@ class FilterView: UIView {
             countryRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
             sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
             selectedSource = ""
+            sourcesDropDownMenu.text = "Select Source"
         } else {
             countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
             sourceRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
             selectedCountry = ""
+            countriesDropDownMenu.text = "Select Country"
         }
     }
     
@@ -142,79 +174,19 @@ class FilterView: UIView {
     @IBAction func cancleFilterButtonPressed(_ sender: Any) {
         countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
         selectedCountry = ""
+        countriesDropDownMenu.text = "Select Country"
         
         sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
         selectedSource = ""
+        sourcesDropDownMenu.text = "Select Source"
         
         delegate?.cancleFilter()
-        closeView()
     }
     
     // MARK: - Functions
     @objc
     func closeView() {
-        countriesDropDownMenu.closeAllComponents(animated: true)
-        sourcesDropDownMenu.closeAllComponents(animated: true)
-        
         blurView.removeBlurEffect()
         removeFromSuperview()
-    }
-}
-
-// MARK: - EXtensions
-// Dropdown menu pod extension functions
-extension FilterView : MKDropdownMenuDataSource, MKDropdownMenuDelegate {
-    func numberOfComponents(in dropdownMenu: MKDropdownMenu) -> Int {
-        return 1
-    }
-    
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
-        if dropdownMenu == countriesDropDownMenu {
-            return countries?.count ?? 0
-        } else {
-            return sources?.count ?? 0
-        }
-    }
-    
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForComponent component: Int) -> UIView {
-        let cell = FilterListCell(frame: CGRect(x: 0, y: 0, width: dropdownMenu.frame.size.width, height: dropdownMenu.frame.size.height))
-        let name = (dropdownMenu == countriesDropDownMenu) ? "Select Country" : "Select Source"
-        cell.setCountryName(name)
-        
-        return cell
-    }
-    
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let cell = FilterListCell(frame: CGRect(x: 0, y: 0, width: dropdownMenu.frame.size.width, height: dropdownMenu.frame.size.height))
-        var name = ""
-        
-        if dropdownMenu == countriesDropDownMenu {
-            if let countriesList = countries {
-                name = countriesList[row]
-            }
-        } else {
-            if let sourcesList = sources {
-                name = sourcesList[row].name ?? ""
-            }
-        }
-        
-        cell.setCountryName(name)
-        return cell
-    }
-    
-    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didSelectRow row: Int, inComponent component: Int) {
-        dropdownMenu.closeAllComponents(animated: true)
-        
-        if dropdownMenu == countriesDropDownMenu {
-            guard let countriesList = countries else { return }
-            selectedCountry = countriesList[row]
-            countryRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
-            sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
-        } else {
-            guard let sourcesList = sources else { return }
-            selectedSource = sourcesList[row].name ?? ""
-            countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
-            sourceRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
-        }
     }
 }
