@@ -37,6 +37,7 @@ let FILTER_URL: String = BASE_URL + TOP_HEADLINES
 enum FilterQuery {
     case country
     case source
+    case none
 }
 
 enum Headlines {

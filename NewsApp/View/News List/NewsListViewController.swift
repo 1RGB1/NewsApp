@@ -20,12 +20,12 @@ class NewsListViewController: UIViewController {
     let newsListViewModel = NewsListViewModel()
     var topHeadlines = [ArticleModel]()
     var filterResult = [ArticleModel]()
+    var filterView: FilterView?
     var countries: [String]?
     var sources: [SourceModel]?
     var page = 1
-    var filterQuery: FilterQuery = .country
-    var query = "us"
-    
+    var filterQuery: FilterQuery = .none
+    var query = ""
     var isFirstTimeLoad = true
     var isInFilterMode = false
     
@@ -77,21 +77,25 @@ class NewsListViewController: UIViewController {
     }
     
     func showFilterView() {
+        if filterView != nil {
+            return
+        }
+        
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
-        let filterView = FilterView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        filterView = FilterView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
-        filterView.countries = self.countries
-        filterView.sources = self.sources
-        filterView.delegate = self
+        filterView!.countries = self.countries
+        filterView!.sources = self.sources
+        filterView!.delegate = self
         
-        self.view.addSubview(filterView)
+        self.view.addSubview(filterView!)
         
-        filterView.snp.makeConstraints { (make) in
+        filterView!.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
         
-        filterView.initData()
+        filterView!.initData()
     }
     
     // MARK: - Outlet Functions
@@ -214,7 +218,20 @@ extension NewsListViewController : FilterViewDelegate {
         isFirstTimeLoad = true
         isInFilterMode = true
         filterResult.removeAll()
+        filterView = nil
+        
+        if filterQuery == .none {
+            return
+        }
         
         newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: filterQuery, andQuery: query)
+    }
+    
+    func cancleFilter() {
+        page = 2
+        filterQuery = .none
+        isInFilterMode = false
+        filterView = nil
+        newsListTableView.reloadData()
     }
 }

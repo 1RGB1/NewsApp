@@ -12,6 +12,7 @@ import MKDropdownMenu
 
 protocol FilterViewDelegate {
     func filterByQuery(_ filterQuery: FilterQuery, andFilterString query: String)
+    func cancleFilter()
 }
 
 class FilterView: UIView {
@@ -136,6 +137,17 @@ class FilterView: UIView {
             closeView()
             return
         }
+    }
+    
+    @IBAction func cancleFilterButtonPressed(_ sender: Any) {
+        countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+        selectedCountry = ""
+        
+        sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+        selectedSource = ""
+        
+        delegate?.cancleFilter()
+        closeView()
     }
     
     // MARK: - Functions
