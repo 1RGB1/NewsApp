@@ -56,7 +56,9 @@ class FilterView: UIView {
         addSubview(containerView)
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
+    }
+    
+    func configure() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeView))
         blurView.addGestureRecognizer(tap)
         
@@ -84,7 +86,10 @@ class FilterView: UIView {
         
         guard let countriesList = countries else { return }
 
+        countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+        countriesDropDownMenu.removeFromSuperview()
         countriesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
+        countriesDropDownMenu.isEnabled = true
         countriesDropDownMenu.text = "Select Country"
         countriesDropDownMenu.listHeight = 200
         countriesDropDownMenu.optionArray = countriesList
@@ -108,7 +113,10 @@ class FilterView: UIView {
         
         guard let sourcesList = sources else { return }
         
+        sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+        sourcesDropDownMenu.removeFromSuperview()
         sourcesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
+        sourcesDropDownMenu.isEnabled = false
         sourcesDropDownMenu.text = "Select Source"
         sourcesDropDownMenu.listHeight = 200
         sourcesDropDownMenu.optionArray = getSourcesNames(sourcesList)
