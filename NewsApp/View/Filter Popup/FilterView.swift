@@ -114,10 +114,12 @@ class FilterView: UIView {
             countryRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
             sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
             selectedSource = ""
+            sourcesDropDownMenu.reloadAllComponents()
         } else {
-            countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
             sourceRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
+            countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
             selectedCountry = ""
+            countriesDropDownMenu.reloadAllComponents()
         }
     }
     
@@ -146,8 +148,9 @@ class FilterView: UIView {
         sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
         selectedSource = ""
         
+        countriesDropDownMenu.reloadAllComponents()
+        sourcesDropDownMenu.reloadAllComponents()
         delegate?.cancleFilter()
-        closeView()
     }
     
     // MARK: - Functions
@@ -178,7 +181,7 @@ extension FilterView : MKDropdownMenuDataSource, MKDropdownMenuDelegate {
     
     func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForComponent component: Int) -> UIView {
         let cell = FilterListCell(frame: CGRect(x: 0, y: 0, width: dropdownMenu.frame.size.width, height: dropdownMenu.frame.size.height))
-        let name = (dropdownMenu == countriesDropDownMenu) ? "Select Country" : "Select Source"
+        let name = (dropdownMenu == countriesDropDownMenu) ? ((selectedCountry != "") ? selectedCountry : "Select Country") : (selectedSource != "") ? selectedSource : "Select Source"
         cell.setCountryName(name)
         
         return cell
@@ -209,12 +212,20 @@ extension FilterView : MKDropdownMenuDataSource, MKDropdownMenuDelegate {
             guard let countriesList = countries else { return }
             selectedCountry = countriesList[row]
             countryRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
+            countriesDropDownMenu.reloadAllComponents()
+            
             sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+            selectedSource = ""
+            sourcesDropDownMenu.reloadAllComponents()
         } else {
             guard let sourcesList = sources else { return }
             selectedSource = sourcesList[row].name ?? ""
-            countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
             sourceRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
+            sourcesDropDownMenu.reloadAllComponents()
+            
+            countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+            selectedCountry = ""
+            countriesDropDownMenu.reloadAllComponents()
         }
     }
 }
