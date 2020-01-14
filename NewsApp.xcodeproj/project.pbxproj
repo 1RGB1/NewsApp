@@ -91,6 +91,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E0C4789C23CD8F1200A34955 /* Filter List Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E0F05D3023CB801700386CB0 /* FilterListCell.swift */,
+				E0F05D2E23CB7E0D00386CB0 /* FilterListCell.xib */,
+			);
+			path = "Filter List Cell";
+			sourceTree = "<group>";
+		};
 		E0F05CB523C5D22B00386CB0 = {
 			isa = PBXGroup;
 			children = (
@@ -191,8 +200,7 @@
 			children = (
 				E0F05D2223CB272900386CB0 /* FilterView.swift */,
 				E0F05D2423CB274D00386CB0 /* FilterView.xib */,
-				E0F05D3023CB801700386CB0 /* FilterListCell.swift */,
-				E0F05D2E23CB7E0D00386CB0 /* FilterListCell.xib */,
+				E0C4789C23CD8F1200A34955 /* Filter List Cell */,
 			);
 			path = "Filter Popup";
 			sourceTree = "<group>";
