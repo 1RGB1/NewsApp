@@ -109,7 +109,7 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="cancleFilterButtonPressed:" destination="-1" eventType="touchUpInside" id="hNA-CV-H3l"/>
+                                <action selector="cancleFilterButtonPressed:" destination="-1" eventType="touchUpInside" id="Occ-Xk-YYH"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9a-g6-Stf" userLabel="Filter Button">
