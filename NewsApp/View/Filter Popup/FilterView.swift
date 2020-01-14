@@ -10,6 +10,10 @@ import UIKit
 import SnapKit
 import MKDropdownMenu
 
+protocol FilterViewDelegate {
+    func filterByQuery(_ filterQuery: FilterQuery, andFilterString query: String)
+}
+
 class FilterView: UIView {
 
     // MARK: - Outlets
@@ -24,6 +28,8 @@ class FilterView: UIView {
     @IBOutlet weak var filterButton: UIButton!
     
     // MARK: - Properties
+    var newsListViewModel: NewsListViewModel?
+    var delegate: FilterViewDelegate?
     var countries: [String]?
     var sources: [SourceModel]?
     var countriesDropDownMenu = MKDropdownMenu()
@@ -102,11 +108,34 @@ class FilterView: UIView {
     }
     
     // MARK: - Outlet Functions
+    @IBAction func radioButtonPressed(_ sender: UIButton) {
+        if sender == countryRadioButton {
+            countryRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
+            sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+            selectedSource = ""
+        } else {
+            countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+            sourceRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
+            selectedCountry = ""
+        }
+    }
+    
     @IBAction func dismissButtonPressed(_ sender: Any) {
         closeView()
     }
     
     @IBAction func filterButtonPressed(_ sender: Any) {
+        if selectedCountry != "" {
+            delegate?.filterByQuery(.country, andFilterString: selectedCountry)
+            closeView()
+            return
+        }
+        
+        if selectedSource != "" {
+            delegate?.filterByQuery(.source, andFilterString: selectedSource)
+            closeView()
+            return
+        }
     }
     
     // MARK: - Functions
@@ -118,16 +147,10 @@ class FilterView: UIView {
         blurView.removeBlurEffect()
         removeFromSuperview()
     }
-    
-    func fillCountriesList() {
-        
-    }
-    
-    func fillSourcesList() {
-        
-    }
 }
 
+// MARK: - EXtensions
+// Dropdown menu pod extension functions
 extension FilterView : MKDropdownMenuDataSource, MKDropdownMenuDelegate {
     func numberOfComponents(in dropdownMenu: MKDropdownMenu) -> Int {
         return 1
@@ -173,9 +196,13 @@ extension FilterView : MKDropdownMenuDataSource, MKDropdownMenuDelegate {
         if dropdownMenu == countriesDropDownMenu {
             guard let countriesList = countries else { return }
             selectedCountry = countriesList[row]
+            countryRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
+            sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
         } else {
             guard let sourcesList = sources else { return }
             selectedSource = sourcesList[row].name ?? ""
+            countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
+            sourceRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
         }
     }
 }

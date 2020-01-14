@@ -63,6 +63,9 @@
                                 <constraint firstAttribute="height" constant="20" id="h4W-Ol-Htu"/>
                             </constraints>
                             <state key="normal" image="RadioButtonUnChecked"/>
+                            <connections>
+                                <action selector="radioButtonPressed:" destination="-1" eventType="touchUpInside" id="cfG-hT-c3q"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZt-EF-eSz" userLabel="Country Drop Down List">
                             <rect key="frame" x="65" y="71" width="299" height="35"/>
@@ -78,6 +81,9 @@
                                 <constraint firstAttribute="height" constant="20" id="ybi-R0-NZ6"/>
                             </constraints>
                             <state key="normal" image="RadioButtonUnChecked"/>
+                            <connections>
+                                <action selector="radioButtonPressed:" destination="-1" eventType="touchUpInside" id="rQe-5W-gEl"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyO-jy-Idu" userLabel="Source Drop Down List">
                             <rect key="frame" x="65" y="121" width="299" height="35"/>
