@@ -86,6 +86,7 @@ class FilterView: UIView {
 
         countriesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
         countriesDropDownMenu.text = "Select Country"
+        countriesDropDownMenu.listHeight = 200
         countriesDropDownMenu.optionArray = countriesList
         countriesDropDownMenu.didSelect { [weak self] (selectedCountry, index, id) in
             self?.selectedCountry = selectedCountry
@@ -109,6 +110,7 @@ class FilterView: UIView {
         
         sourcesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
         sourcesDropDownMenu.text = "Select Source"
+        sourcesDropDownMenu.listHeight = 200
         sourcesDropDownMenu.optionArray = getSourcesNames(sourcesList)
         sourcesDropDownMenu.didSelect { [weak self] (selectedSource, index, id) in
             self?.selectedSource = selectedSource
