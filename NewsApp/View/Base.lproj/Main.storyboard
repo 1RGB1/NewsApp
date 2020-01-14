@@ -196,6 +196,12 @@
                         <viewLayoutGuide key="safeArea" id="zcw-x6-CMd"/>
                     </view>
                     <navigationItem key="navigationItem" id="Gxr-cW-sZR"/>
+                    <connections>
+                        <outlet property="articleAuthorLabel" destination="DE5-Gx-kZ4" id="nEb-OK-Y96"/>
+                        <outlet property="articleDescriptionLabel" destination="Mby-6r-uHg" id="8nL-xX-9g0"/>
+                        <outlet property="articleSourceURLLabel" destination="tEf-ng-n2x" id="bsH-0f-Vho"/>
+                        <outlet property="articleTitleLabel" destination="aNA-1f-GQt" id="rya-Be-SN3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SdB-QM-LK3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

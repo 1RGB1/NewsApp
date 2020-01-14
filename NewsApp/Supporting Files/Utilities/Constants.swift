@@ -34,12 +34,13 @@ let COUNTRIES_UR: String = BASE_URL + ""
 
 let FILTER_URL: String = BASE_URL + TOP_HEADLINES
 
-enum FILTER_QUERY {
+enum FilterQuery {
     case country
     case source
+    case none
 }
 
-enum HEADLINES {
+enum Headlines {
     case everything
     case filtered
 }

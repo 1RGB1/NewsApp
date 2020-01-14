@@ -8,6 +8,7 @@
 
 import UIKit
 import SVPullToRefreshImprove
+import SnapKit
 
 class NewsListViewController: UIViewController {
 
@@ -17,13 +18,14 @@ class NewsListViewController: UIViewController {
     
     // MARK: - Properties
     let newsListViewModel = NewsListViewModel()
-    
     var topHeadlines = [ArticleModel]()
     var filterResult = [ArticleModel]()
-    var sources = [SourcesModel]()
-    var searchKeyword = ""
+    var filterView: FilterView?
+    var countries: [String]?
+    var sources: [SourceModel]?
     var page = 1
-    
+    var filterQuery: FilterQuery = .none
+    var query = ""
     var isFirstTimeLoad = true
     var isInFilterMode = false
     
@@ -71,11 +73,35 @@ class NewsListViewController: UIViewController {
     }
     
     func getFilteredHeadlines() {
-//        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: .source, andQuery: searchKeyword)
+        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: filterQuery, andQuery: query)
+    }
+    
+    func showFilterView() {
+        if filterView != nil {
+            return
+        }
+        
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        filterView = FilterView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        filterView!.countries = self.countries
+        filterView!.sources = self.sources
+        filterView!.delegate = self
+        
+        self.view.addSubview(filterView!)
+        
+        filterView!.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        filterView!.initData()
     }
     
     // MARK: - Outlet Functions
     @IBAction func filteButtonPressed(_ sender: Any) {
+        newsListViewModel.getCountriesList()
+        newsListViewModel.getSourcesList()
     }
 }
 
@@ -132,28 +158,11 @@ extension NewsListViewController : UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension NewsListViewController : UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        handleLoadMore()
-//        searchResult.removeAll()
-//        searchPage = 1
-//        maxSearchPages = 1
-//
-//        if searchText.count >= 4 {
-//            isInSearchMode = true
-//            searchKeyword = searchText
-//            movieListViewModel.getMoviesBySearchWith(searchPage, andKeyword: searchKeyword)
-//            moviesListTableView.separatorStyle = .singleLine
-//        } else {
-//            isInSearchMode = false
-//            moviesListTableView.separatorStyle = .none
-//            moviesListTableView.reloadData()
-//        }
-//    }
-}
-
+// MARK: - Extensions
+// News List Delegate
 extension NewsListViewController : NewsListViewModelDelegate {
-    func setTopHeadlinesList(_ model: TopHeadlinesModel?, _ error: String?) {
+    
+    func setTopHeadlinesList(_ model: TopHeadlinesModel?, forHeadlinesType type: Headlines, _ error: String?) {
         if let topHeadlinesModel = model, let articles = topHeadlinesModel.articles, let total = topHeadlinesModel.totalResults {
             if isFirstTimeLoad {
                 Utilities.showProgressHUDWithSuccess("Success")
@@ -162,7 +171,11 @@ extension NewsListViewController : NewsListViewModelDelegate {
             
             newsListTableView.infiniteScrollingView.stopAnimating()
             
-            topHeadlines.append(contentsOf: articles)
+            if type == .everything {
+                topHeadlines.append(contentsOf: articles)
+            } else {
+                filterResult.append(contentsOf: articles)
+            }
             page += 1
             
             newsListTableView.reloadData()
@@ -178,32 +191,47 @@ extension NewsListViewController : NewsListViewModelDelegate {
         }
     }
     
-    func setFilteredList(_ model: TopHeadlinesModel?, _ error: String?) {
-//        if let topHeadlinesModel = model, let articles = topHeadlinesModel.articles, let total = topHeadlinesModel.totalResults {
-//            if isFirstTimeLoad {
-//                Utilities.showProgressHUDWithSuccess("Success")
-//                isFirstTimeLoad = false
-//            }
-//            
-//            newsListTableView.infiniteScrollingView.stopAnimating()
-//            
-//            filterResult.append(contentsOf: articles)
-//            page += 1
-//            
-//            newsListTableView.reloadData()
-//            newsListTableView.showsInfiniteScrolling = (page <= total)
-//        } else {
-//            if isFirstTimeLoad {
-//                Utilities.showProgressHUDWithError(error ?? "")
-//                isFirstTimeLoad = false
-//            }
-//            
-//            newsListTableView.infiniteScrollingView.stopAnimating()
-//            newsListTableView.showsInfiniteScrolling = false
-//        }
+    func setCountriesList(_ countries: [String]?, _ error: String?) {
+        if let list = countries {
+            self.countries = list
+        } else {
+            Utilities.showProgressHUDWithError(error ?? "")
+        }
     }
     
     func setSourcesList(_ model: SourcesModel?, _ error: String?) {
+        if let sourcesModel = model, let list = sourcesModel.sources {
+            self.sources = list
+            showFilterView()
+        } else {
+            Utilities.showProgressHUDWithError(error ?? "")
+        }
+    }
+}
+
+// Filter View Delegate
+extension NewsListViewController : FilterViewDelegate {
+    func filterByQuery(_ filterQuery: FilterQuery, andFilterString query: String) {
+        page = 1
+        self.filterQuery = filterQuery
+        self.query = query
+        isFirstTimeLoad = true
+        isInFilterMode = true
+        filterResult.removeAll()
+        filterView = nil
         
+        if filterQuery == .none {
+            return
+        }
+        
+        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: filterQuery, andQuery: query)
+    }
+    
+    func cancleFilter() {
+        page = 2
+        filterQuery = .none
+        isInFilterMode = false
+        filterView = nil
+        newsListTableView.reloadData()
     }
 }

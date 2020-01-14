@@ -10,7 +10,7 @@ import ObjectMapper
 
 class NewsStore: BaseNetwork {
     
-    func getTopHeadlinesListWithParameters(_ params: [String : AnyHashable], headlinesType: HEADLINES, andCompletionHandler completion: @escaping (_ model: TopHeadlinesModel?, _ error: String?) -> ()) {
+    func getTopHeadlinesListWithParameters(_ params: [String : AnyHashable], headlinesType: Headlines, andCompletionHandler completion: @escaping (_ model: TopHeadlinesModel?, _ error: String?) -> ()) {
         
         let url = ((headlinesType == .everything) ? NEWS_LIST_URL : FILTER_URL)
         
@@ -27,6 +27,21 @@ class NewsStore: BaseNetwork {
                 } else {
                     completion(topHeadlinesModel, nil)
                 }
+            }
+        }
+    }
+    
+    func getCountriesWithCompletion(_ completion: @escaping (_ model: [String]?, _ error: String?) -> ()) {
+        var countries: [String]?
+        
+        if  let path = Bundle.main.path(forResource: "Countries", ofType: "plist"),
+            let xml = FileManager.default.contents(atPath: path) {
+            
+            do {
+                countries = try PropertyListSerialization.propertyList(from: xml, options: .mutableContainersAndLeaves, format: nil) as? [String]
+                completion(countries, nil)
+            } catch {
+                completion(nil, error.localizedDescription)
             }
         }
     }
