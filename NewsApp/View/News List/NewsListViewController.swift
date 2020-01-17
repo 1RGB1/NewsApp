@@ -15,6 +15,9 @@ class NewsListViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var newsListTableView: UITableView!
     @IBOutlet weak var noDataFoundLabel: UILabel!
+    @IBOutlet weak var reloadLabel: UILabel!
+    @IBOutlet weak var underlineView: UIView!
+    @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var filterButton: UIBarButtonItem!
     
     // MARK: - Properties
@@ -105,21 +108,35 @@ class NewsListViewController: UIViewController {
     }
     
     func handleNoDataFound(showNoData: Bool) {
-        if showNoData {
-            noDataFoundLabel.isHidden = false
-            noDataFoundLabel.text = "No Data Found"
-            newsListTableView.isHidden = true
-        } else {
-            noDataFoundLabel.isHidden = true
-            noDataFoundLabel.text = ""
-            newsListTableView.isHidden = false
-        }
+        noDataFoundLabel.isHidden = !showNoData
+        noDataFoundLabel.text = showNoData ? "No Data Found" : ""
+        reloadLabel.isHidden = !showNoData
+        reloadButton.isHidden = !showNoData
+        underlineView.isHidden = !showNoData
+        newsListTableView.isHidden = showNoData
     }
     
     // MARK: - Outlet Functions
     @IBAction func filteButtonPressed(_ sender: Any) {
+        
+        if sources != nil && sources?.count != 0 {
+            showFilterView()
+            return
+        }
+        
+        Utilities.showProgressHUD()
         filterPopupViewModel.getCountriesList()
         filterPopupViewModel.getSourcesList()
+    }
+    
+    @IBAction func reloadDataButtonPressed(_ sender: Any) {
+        isFirstTimeLoad = true
+        
+        if isInFilterMode {
+            getFilteredHeadlines()
+        } else {
+            getTopHeadlines()
+        }
     }
 }
 
@@ -198,7 +215,7 @@ extension NewsListViewController : NewsListViewModelDelegate {
             }
             
             if isFirstTimeLoad {
-                Utilities.showProgressHUDWithError(error ?? "")
+                Utilities.showProgressHUDWithError(error ?? "Opps, something went wrong")
                 isFirstTimeLoad = false
             }
             
@@ -222,6 +239,7 @@ extension NewsListViewController : FilterPopupViewModelDelegate {
     func setSourcesList(_ model: SourcesModel?, _ error: String?) {
         if let sourcesModel = model, let list = sourcesModel.sources {
             self.sources = list
+            Utilities.showProgressHUDWithSuccess("Success")
             showFilterView()
         } else {
             Utilities.showProgressHUDWithError(error ?? "")

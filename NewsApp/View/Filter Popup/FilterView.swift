@@ -59,8 +59,8 @@ class FilterView: UIView {
     }
     
     func configure() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeView))
-        blurView.addGestureRecognizer(tap)
+        let closeTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.closeView))
+        blurView.addGestureRecognizer(closeTapGesture)
         
         initUI()
     }
@@ -86,9 +86,12 @@ class FilterView: UIView {
         
         guard let countriesList = countries else { return }
 
+        let filterCountryTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.openCountriesMenu))
+        
         countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
         countriesDropDownMenu.removeFromSuperview()
         countriesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: countriesDropDownListView.frame.size.width, height: countriesDropDownListView.frame.size.height))
+        countriesDropDownMenu.addGestureRecognizer(filterCountryTapGesture)
         countriesDropDownMenu.text = "Select Country"
         countriesDropDownMenu.delegate = self
         countriesDropDownMenu.listHeight = 200
@@ -105,7 +108,6 @@ class FilterView: UIView {
         countriesDropDownMenu.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(10)
-
         }
     }
     
@@ -113,9 +115,12 @@ class FilterView: UIView {
         
         guard let sourcesList = sources else { return }
         
+        let filterSourceTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.openSourcesMenu))
+        
         sourceRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
         sourcesDropDownMenu.removeFromSuperview()
         sourcesDropDownMenu = DropDown(frame: CGRect(x: 0, y: 0, width: sourcesDropDownListView.frame.size.width, height: sourcesDropDownListView.frame.size.height))
+        sourcesDropDownMenu.addGestureRecognizer(filterSourceTapGesture)
         sourcesDropDownMenu.text = "Select Source"
         sourcesDropDownMenu.delegate = self
         sourcesDropDownMenu.listHeight = 200
@@ -132,8 +137,17 @@ class FilterView: UIView {
         sourcesDropDownMenu.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(10)
-
         }
+    }
+    
+    @objc
+    func openCountriesMenu() {
+        countriesDropDownMenu.showList()
+    }
+    
+    @objc
+    func openSourcesMenu() {
+        sourcesDropDownMenu.showList()
     }
     
     func getSourcesNames(_ sources: [SourceModel]) -> [String] {
@@ -197,6 +211,7 @@ class FilterView: UIView {
     @objc
     func closeView() {
         blurView.removeBlurEffect()
+        delegate?.cancleFilter()
         removeFromSuperview()
     }
 }

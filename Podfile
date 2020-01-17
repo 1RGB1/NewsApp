@@ -13,6 +13,5 @@ target 'NewsApp' do
   pod 'SVPullToRefreshImprove'
   pod 'SVProgressHUD'
   pod 'Kingfisher'
-  pod 'SkeletonView'
 
 end
