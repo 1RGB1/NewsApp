@@ -13,5 +13,7 @@ target 'NewsApp' do
   pod 'SVPullToRefreshImprove'
   pod 'SVProgressHUD'
   pod 'Kingfisher'
+  pod 'Firebase/Performance'
+  pod 'Firebase/Analytics'
 
 end

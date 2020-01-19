@@ -87,7 +87,7 @@ class NewsListViewController: UIViewController {
     }
 
     func getFilteredHeadlines() {
-        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: filterQuery, andQuery: query)
+        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: self.filterQuery, andQuery: self.query)
     }
     
     func showFilterView() {
@@ -266,14 +266,19 @@ extension NewsListViewController : FilterViewDelegate {
             return
         }
         
-        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: filterQuery, andQuery: query)
+        newsListViewModel.getFilteredHeadlinesByPage(page, andFilterQuery: self.filterQuery, andQuery: self.query)
     }
     
-    func cancleFilter() {
-        page = 2
-        filterQuery = .none
-        isInFilterMode = false
+    func closeViewWithFilter(_ filterOn: Bool) {
+        
         filterButton.isEnabled = true
+        
+        if !filterOn {
+            page = 2
+            filterQuery = .none
+            isInFilterMode = false
+        }
+    
         newsListTableView.reloadData()
     }
     

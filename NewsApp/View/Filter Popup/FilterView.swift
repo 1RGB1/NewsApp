@@ -9,10 +9,11 @@
 import UIKit
 import SnapKit
 import iOSDropDown
+import FirebasePerformance
 
 protocol FilterViewDelegate {
     func filterByQuery(_ filterQuery: FilterQuery, andFilterString query: String)
-    func cancleFilter()
+    func closeViewWithFilter(_ filterOn: Bool)
 }
 
 class FilterView: UIView {
@@ -84,7 +85,11 @@ class FilterView: UIView {
     
     func initCountriesDropDownMenu() {
         
-        guard let countriesList = countries else { return }
+        let trace = Performance.startTrace(name: "CreateCountriesDropdownMenu")
+        guard let countriesList = countries else {
+            trace?.stop()
+            return
+        }
 
         let filterCountryTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.openCountriesMenu))
         
@@ -109,11 +114,17 @@ class FilterView: UIView {
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(10)
         }
+        
+        trace?.stop()
     }
     
     func initSourcesDropDownMenu() {
         
-        guard let sourcesList = sources else { return }
+        let trace = Performance.startTrace(name: "CreateSourcesDropdownMenu")
+        guard let sourcesList = sources else {
+            trace?.stop()
+            return
+        }
         
         let filterSourceTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.openSourcesMenu))
         
@@ -129,7 +140,7 @@ class FilterView: UIView {
             self?.selectedSource = selectedSource
             self?.sourceRadioButton.setImage(UIImage(named: "RadioButtonChecked"), for: .normal)
             self?.countryRadioButton.setImage(UIImage(named: "RadioButtonUnChecked"), for: .normal)
-            self?.countriesDropDownMenu.text = "Select County"
+            self?.countriesDropDownMenu.text = "Select Country"
         }
         
         sourcesDropDownListView.addSubview(sourcesDropDownMenu)
@@ -138,6 +149,8 @@ class FilterView: UIView {
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(10)
         }
+        
+        trace?.stop()
     }
     
     @objc
@@ -151,6 +164,9 @@ class FilterView: UIView {
     }
     
     func getSourcesNames(_ sources: [SourceModel]) -> [String] {
+        
+        let trace = Performance.startTrace(name: "SourcesNames")
+        
         var result = [String]()
         
         for source in sources {
@@ -158,6 +174,8 @@ class FilterView: UIView {
                 result.append(name)
             }
         }
+        
+        trace?.stop()
         
         return result
     }
@@ -178,19 +196,19 @@ class FilterView: UIView {
     }
     
     @IBAction func dismissButtonPressed(_ sender: Any) {
-        closeView()
+        closeViewWithFilter(false)
     }
     
     @IBAction func filterButtonPressed(_ sender: Any) {
         if selectedCountry != "" {
             delegate?.filterByQuery(.country, andFilterString: selectedCountry)
-            closeView()
+            closeViewWithFilter(true)
             return
         }
         
         if selectedSource != "" {
             delegate?.filterByQuery(.source, andFilterString: selectedSource)
-            closeView()
+            closeViewWithFilter(true)
             return
         }
     }
@@ -204,14 +222,18 @@ class FilterView: UIView {
         selectedSource = ""
         sourcesDropDownMenu.text = "Select Source"
         
-        delegate?.cancleFilter()
+        delegate?.closeViewWithFilter(false)
     }
     
     // MARK: - Functions
     @objc
     func closeView() {
+        closeViewWithFilter(false)
+    }
+    
+    func closeViewWithFilter(_ filterOn: Bool) {
         blurView.removeBlurEffect()
-        delegate?.cancleFilter()
+        delegate?.closeViewWithFilter(filterOn)
         removeFromSuperview()
     }
 }

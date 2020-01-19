@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8B9E14771917315CDFB60045 /* Pods_NewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B096643FDA7026401BDF290D /* Pods_NewsApp.framework */; };
 		E091647323CE2D61006368A1 /* FilterPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091647223CE2D61006368A1 /* FilterPopupViewModel.swift */; };
+		E0AE65E223D465090019228D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0AE65E123D465090019228D /* GoogleService-Info.plist */; };
 		E0F05CC223C5D22B00386CB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CC123C5D22B00386CB0 /* AppDelegate.swift */; };
 		E0F05CC423C5D22B00386CB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F05CC323C5D22B00386CB0 /* SceneDelegate.swift */; };
 		E0F05CC923C5D22B00386CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0F05CC723C5D22B00386CB0 /* Main.storyboard */; };
@@ -40,6 +41,13 @@
 		89F2E6CD607527979D90A21F /* Pods-NewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.debug.xcconfig"; path = "Target Support Files/Pods-NewsApp/Pods-NewsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B096643FDA7026401BDF290D /* Pods_NewsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E091647223CE2D61006368A1 /* FilterPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPopupViewModel.swift; sourceTree = "<group>"; };
+		E0AE65CE23D4606D0019228D /* FirebaseABTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseABTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0AE65CF23D4606D0019228D /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0AE65D023D4606D0019228D /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0AE65D123D4606D0019228D /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0AE65D223D4606D0019228D /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0AE65D323D4606D0019228D /* FirebaseRemoteConfig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseRemoteConfig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0AE65E123D465090019228D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E0F05CBE23C5D22B00386CB0 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F05CC123C5D22B00386CB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0F05CC323C5D22B00386CB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +144,7 @@
 				E0F05CDD23C5E3F600386CB0 /* Utilities */,
 				E0F05CC123C5D22B00386CB0 /* AppDelegate.swift */,
 				E0F05CC323C5D22B00386CB0 /* SceneDelegate.swift */,
+				E0AE65E123D465090019228D /* GoogleService-Info.plist */,
 				E0F05CCF23C5D22C00386CB0 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -255,6 +264,12 @@
 		EBA575B1C05F3DD2B3F22CC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0AE65CE23D4606D0019228D /* FirebaseABTesting.framework */,
+				E0AE65CF23D4606D0019228D /* FirebaseCore.framework */,
+				E0AE65D023D4606D0019228D /* FirebaseCoreDiagnostics.framework */,
+				E0AE65D123D4606D0019228D /* FirebaseInstallations.framework */,
+				E0AE65D223D4606D0019228D /* FirebaseInstanceID.framework */,
+				E0AE65D323D4606D0019228D /* FirebaseRemoteConfig.framework */,
 				B096643FDA7026401BDF290D /* Pods_NewsApp.framework */,
 			);
 			name = Frameworks;
@@ -325,6 +340,7 @@
 				E0F05CCB23C5D22C00386CB0 /* Assets.xcassets in Resources */,
 				E0F05D2D23CB766E00386CB0 /* Countries.plist in Resources */,
 				E0F05CC923C5D22B00386CB0 /* Main.storyboard in Resources */,
+				E0AE65E223D465090019228D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +559,32 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4B6HF4627C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseABTesting\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseRemoteConfig\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransportCCTSupport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ObjectMapper\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVPullToRefreshImprove\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSDropDown\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebasePerformance/Frameworks\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Firebase\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/NewsApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -562,6 +604,31 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4B6HF4627C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseABTesting\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseRemoteConfig\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransportCCTSupport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ObjectMapper\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVPullToRefreshImprove\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSDropDown\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebasePerformance/Frameworks\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/NewsApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
