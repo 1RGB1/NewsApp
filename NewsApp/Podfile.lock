@@ -1,0 +1,38 @@
+PODS:
+  - Alamofire (5.4.3)
+  - PagingTableView (0.1.0)
+  - ProgressHUD (2.70)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - PagingTableView
+  - ProgressHUD
+  - RxCocoa
+  - RxSwift
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - PagingTableView
+    - ProgressHUD
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+
+SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  PagingTableView: ba7869ff22f7cf3f8b2190b0314688d2cb0e46c4
+  ProgressHUD: e603e8b8622c47d8818b9fb38b3cfe9d3e7ca421
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+
+PODFILE CHECKSUM: 743c88443d80bf9194d59d4c98b73f7a35f00736
+
+COCOAPODS: 1.10.1
