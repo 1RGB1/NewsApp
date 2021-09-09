@@ -45,6 +45,9 @@
 		E09A5E6726EAC84200E5511F /* TextCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E6626EAC84200E5511F /* TextCellViewModel.swift */; };
 		E09A5E6A26EAC87F00E5511F /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E6826EAC87E00E5511F /* TextTableViewCell.swift */; };
 		E09A5E6B26EAC87F00E5511F /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09A5E6926EAC87E00E5511F /* TextTableViewCell.xib */; };
+		E09A5E6D26EACB2800E5511F /* ActionKeyValueCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E6C26EACB2800E5511F /* ActionKeyValueCellViewModel.swift */; };
+		E09A5E7026EACBA500E5511F /* ActionKeyValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E6E26EACBA500E5511F /* ActionKeyValueTableViewCell.swift */; };
+		E09A5E7126EACBA500E5511F /* ActionKeyValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09A5E6F26EACBA500E5511F /* ActionKeyValueTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,9 @@
 		E09A5E6626EAC84200E5511F /* TextCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCellViewModel.swift; sourceTree = "<group>"; };
 		E09A5E6826EAC87E00E5511F /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
 		E09A5E6926EAC87E00E5511F /* TextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextTableViewCell.xib; sourceTree = "<group>"; };
+		E09A5E6C26EACB2800E5511F /* ActionKeyValueCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionKeyValueCellViewModel.swift; sourceTree = "<group>"; };
+		E09A5E6E26EACBA500E5511F /* ActionKeyValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionKeyValueTableViewCell.swift; sourceTree = "<group>"; };
+		E09A5E6F26EACBA500E5511F /* ActionKeyValueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionKeyValueTableViewCell.xib; sourceTree = "<group>"; };
 		E67B48CB236688EAC67C1B6A /* Pods_NewsAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -344,6 +350,9 @@
 		E09A5E5726EAC08100E5511F /* ActionKeyValueCell */ = {
 			isa = PBXGroup;
 			children = (
+				E09A5E6C26EACB2800E5511F /* ActionKeyValueCellViewModel.swift */,
+				E09A5E6E26EACBA500E5511F /* ActionKeyValueTableViewCell.swift */,
+				E09A5E6F26EACBA500E5511F /* ActionKeyValueTableViewCell.xib */,
 			);
 			path = ActionKeyValueCell;
 			sourceTree = "<group>";
@@ -458,6 +467,7 @@
 				E09A5E4726E973FC00E5511F /* NewsFeedTableViewCell.xib in Resources */,
 				E09A5E6526EAC42500E5511F /* ImageTextTableViewCell.xib in Resources */,
 				E0159B8426E93D860011ED2D /* Main.storyboard in Resources */,
+				E09A5E7126EACBA500E5511F /* ActionKeyValueTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,9 +564,11 @@
 				E09A5E5526EABD9C00E5511F /* NewsFeedDetailsViewController.swift in Sources */,
 				E09A5E2026E94ACB00E5511F /* NetworkManager.swift in Sources */,
 				E09A5E3626E96E6E00E5511F /* UITableViewExtension.swift in Sources */,
+				E09A5E6D26EACB2800E5511F /* ActionKeyValueCellViewModel.swift in Sources */,
 				E09A5E3F26E96F5600E5511F /* BaseCellViewModel.swift in Sources */,
 				E09A5E2E26E9539900E5511F /* NewsFeedStore.swift in Sources */,
 				E09A5E4A26E9792500E5511F /* NewsFeedTableViewCellViewModel.swift in Sources */,
+				E09A5E7026EACBA500E5511F /* ActionKeyValueTableViewCell.swift in Sources */,
 				E09A5E1A26E949BB00E5511F /* ApiBaseRouter.swift in Sources */,
 				E09A5E3A26E96EC600E5511F /* ReusableProtocol.swift in Sources */,
 				E09A5E2826E94D6A00E5511F /* SourceModel.swift in Sources */,
