@@ -1,38 +1,28 @@
 PODS:
   - Alamofire (5.4.3)
-  - PagingTableView (0.1.0)
-  - ProgressHUD (2.70)
-  - RxCocoa (6.2.0):
-    - RxRelay (= 6.2.0)
-    - RxSwift (= 6.2.0)
-  - RxRelay (6.2.0):
-    - RxSwift (= 6.2.0)
-  - RxSwift (6.2.0)
+  - Kingfisher (6.3.1)
+  - ProgressHUD (13.6)
+  - UIScrollView-InfiniteScroll (1.1.0)
 
 DEPENDENCIES:
   - Alamofire
-  - PagingTableView
-  - ProgressHUD
-  - RxCocoa
-  - RxSwift
+  - Kingfisher
+  - ProgressHUD (= 13.6)
+  - UIScrollView-InfiniteScroll
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
-    - PagingTableView
+    - Kingfisher
     - ProgressHUD
-    - RxCocoa
-    - RxRelay
-    - RxSwift
+    - UIScrollView-InfiniteScroll
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
-  PagingTableView: ba7869ff22f7cf3f8b2190b0314688d2cb0e46c4
-  ProgressHUD: e603e8b8622c47d8818b9fb38b3cfe9d3e7ca421
-  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
-  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
-  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
+  ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
+  UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
 
-PODFILE CHECKSUM: 743c88443d80bf9194d59d4c98b73f7a35f00736
+PODFILE CHECKSUM: 71e20d3ff59e8bb961a4b7953cd3e808b91f23c6
 
 COCOAPODS: 1.10.1
