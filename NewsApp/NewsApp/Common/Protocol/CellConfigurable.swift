@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 /// A type that handles cell's view model.
-protocol CellConfigurable {
+protocol CellConfigurable: UITableViewCell {
     
     /// To setup cell with its view model
     /// - Parameters:
     ///   - model:   cell's view model
-    func setUp<T: BaseCellViewModel>(model: T)
+    func setUp(model: BaseCellViewModel)
 }

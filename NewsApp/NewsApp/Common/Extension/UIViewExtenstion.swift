@@ -21,4 +21,12 @@ extension UIView {
         self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 4.0
     }
+    
+    /// To add both color and width to UIView's border
+    /// - Parameters:
+    ///   - color:   value for view's color
+    func setBorderColor(_ color: UIColor) {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = (color == .clear) ? 0.0 : 1.0
+    }
 }
