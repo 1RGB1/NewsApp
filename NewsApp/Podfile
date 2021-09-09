@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '12.1'
+platform :ios, '14.1'
 inhibit_all_warnings!
 
 source 'https://github.com/CocoaPods/Specs.git'
@@ -9,11 +9,10 @@ target 'NewsApp' do
   use_frameworks!
 
   # Pods for NewsApp
-  pod 'PagingTableView'
-  pod 'ProgressHUD'
+  pod 'UIScrollView-InfiniteScroll'
+  pod 'ProgressHUD', '13.6'
   pod 'Alamofire'
-  pod 'RxSwift'
-  pod 'RxCocoa'
+  pod 'Kingfisher'
 
   target 'NewsAppTests' do
     inherit! :search_paths

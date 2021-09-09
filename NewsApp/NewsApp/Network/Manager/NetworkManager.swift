@@ -29,14 +29,18 @@ struct NetworkManager {
                 do {
                     let decoder = JSONDecoder()
                     let model = try decoder.decode(T.self, from: data)
-                    completion(.success(model))
+                    
+                    if let message = model.message {
+                        completion(.failure(NetworkError(errorMsg: message)))
+                    } else {
+                        completion(.success(model))
+                    }
                 } catch let errorModel {
                     let error = NetworkError(errorMsg: errorModel.localizedDescription)
                     completion(.failure(error))
                 }
             case .failure:
-                let error = NetworkError(errorMsg: NetworkConstants.genericError)
-                completion(.failure(error))
+                completion(.failure(NetworkError.genericError()))
             }
         })
     }

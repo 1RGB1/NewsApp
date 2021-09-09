@@ -17,9 +17,6 @@ struct NetworkConstants {
     
     /// API's key
     static let apiKey = "c1857823daa84c6fa5ff3974a21ce78b"
-    
-    /// Generic error message
-    static let genericError = "Something went wrong"
 }
 
 /// API's sort by keys 
