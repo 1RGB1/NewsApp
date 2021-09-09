@@ -8,11 +8,10 @@
 
 ## Used libraries
 
-- [PagingTableView] To be able to use pagination feature
+- [UIScrollView-InfiniteScroll] To be able to use pagination feature
 - [ProgressHUD] To show loading when calling api and show success or fail view when api response returns
 - [Codable] To easily parse api response to custome models
 - [Alamofire] To manage api calls
-- [RxSwift] [RxCocoa] To use observers to handle changes in table view in list
 
 ## Author
 
