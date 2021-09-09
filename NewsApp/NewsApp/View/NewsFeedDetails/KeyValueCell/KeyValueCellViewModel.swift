@@ -11,6 +11,6 @@ import UIKit
 struct KeyValueCellViewModel: BaseCellViewModel {
     var type: UITableViewCell.Type
     let key: String
-    let value: String 
+    let value: String?
 }
 

@@ -21,6 +21,6 @@ extension KeyValueTableViewCell: CellConfigurable {
     func setUp(model: BaseCellViewModel) {
         guard let viewModel = model as? KeyValueCellViewModel else { return }
         keyLabel.text = viewModel.key
-        valueLabel.text = viewModel.value
+        valueLabel.text = viewModel.value ?? "N/A"
     }
 }
