@@ -7,7 +7,13 @@
 
 import Foundation
 
-class NewsFeedStore {
+protocol NewsFeedStoreProtocol {
+    func loadNewsFeedsPage(_ page: Int,
+                           bySearchQuery query: String,
+                           withCompletionBlock completion: @escaping (Result<ArticlesModel, NetworkError>) -> Void)
+}
+
+class NewsFeedStore: NewsFeedStoreProtocol {
     
     /// To load news feeds
     /// - Parameters:

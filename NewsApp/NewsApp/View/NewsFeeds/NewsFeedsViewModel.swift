@@ -10,9 +10,13 @@ import Foundation
 class NewsFeedViewModel {
     
     var cellsViewModels = [BaseCellViewModel]()
-    private var newsFeedStore = NewsFeedStore()
+    private var newsFeedStore: NewsFeedStoreProtocol
     var currentPage = 1
     var query = "apple"
+    
+    init(newsFeedStore: NewsFeedStoreProtocol = NewsFeedStore()) {
+        self.newsFeedStore = newsFeedStore
+    }
     
     func loadNewsFeedsPage(withSuccessBlock success: @escaping () -> Void,
                            withFailureBlock fail: @escaping (String) -> Void) {
