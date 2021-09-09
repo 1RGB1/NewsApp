@@ -17,9 +17,9 @@ class NewsFeedStore {
     func loadNewsFeedsPage(_ page: Int,
                            bySearchQuery query: String,
                            withCompletionBlock completion: @escaping (Result<ArticlesModel, NetworkError>) -> Void) {
-    
+
         let newsFeedRouter = NewsFeedRouter.getNewsFeed(query, page)
-        
+
         NetworkManager.shared.getData(request: newsFeedRouter) { (result: Result<ArticlesModel, NetworkError>) in
             completion(result)
         }
