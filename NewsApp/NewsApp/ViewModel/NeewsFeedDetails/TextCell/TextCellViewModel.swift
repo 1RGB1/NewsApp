@@ -14,7 +14,7 @@ struct TextCellViewModel: BaseCellViewModel {
     let text: String
     let font: UIFont
     
-    init(type: UITableViewCell.Type = TextTableViewCell.self, text: String, font: UIFont) {
+    init(type: UITableViewCell.Type = TextTableViewCell.self, text: String, font: UIFont = .systemFont(ofSize: 16)) {
         self.type = type
         self.text = text
         self.font = font

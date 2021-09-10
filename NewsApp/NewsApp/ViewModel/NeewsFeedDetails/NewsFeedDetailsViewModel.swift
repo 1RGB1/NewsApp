@@ -27,7 +27,11 @@ struct NewsFeedDetailsViewModel: NewsFeedDetailsViewModelProtocol {
         var cellsViewModels = [BaseCellViewModel]()
         
         let imageURL = URL(string: article.urlToImage ?? "")
-        let imageTextCellViewModel = ImageTextCellViewModel(imageUrl: imageURL, text: article.publishedAt ?? "")
+        var dateString = ""
+        if let date = article.publishedAt {
+            dateString = date.formatDateLike(format: "EEEE, MMM d, yyyy")
+        }
+        let imageTextCellViewModel = ImageTextCellViewModel(imageUrl: imageURL, text: dateString)
         cellsViewModels.append(imageTextCellViewModel)
         
         if let title = article.title {

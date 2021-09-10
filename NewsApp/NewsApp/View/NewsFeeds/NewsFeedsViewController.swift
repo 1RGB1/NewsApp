@@ -14,7 +14,7 @@ class NewsFeedsViewController: UIViewController {
     @IBOutlet weak var newsFeedsSearchBar: UISearchBar!
     @IBOutlet weak var newsFeedTableView: UITableView!
     
-    var viewModel = NewsFeedViewModel()
+    var viewModel = NewsFeedsViewModel()
     var isSearching = true
     
     override func viewDidLoad() {
@@ -44,6 +44,7 @@ class NewsFeedsViewController: UIViewController {
     }
     
     fileprivate func prepSearchBar() {
+        newsFeedsSearchBar.becomeFirstResponder()
         newsFeedsSearchBar.delegate = self
         newsFeedsSearchBar.searchTextField.delegate = self
     }

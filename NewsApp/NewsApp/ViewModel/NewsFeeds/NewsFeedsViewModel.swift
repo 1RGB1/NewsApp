@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NewsFeedViewModel {
+class NewsFeedsViewModel {
     
     var cellsViewModels = [BaseCellViewModel]()
     private var newsFeedStore: NewsFeedStoreProtocol

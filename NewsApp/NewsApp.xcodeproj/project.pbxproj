@@ -58,6 +58,11 @@
 		E09A5E8926EAF06900E5511F /* TextCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E8826EAF06900E5511F /* TextCellViewModelTests.swift */; };
 		E09A5E8B26EAF08700E5511F /* KeyValueCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E8A26EAF08700E5511F /* KeyValueCellViewModelTests.swift */; };
 		E09A5E8D26EAF0A900E5511F /* ActionKeyValueCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E8C26EAF0A900E5511F /* ActionKeyValueCellViewModelTests.swift */; };
+		E09A5E8F26EAF46000E5511F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E8E26EAF46000E5511F /* StringExtension.swift */; };
+		E09A5E9A26EAFC7A00E5511F /* NewsFeedsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E9926EAFC7A00E5511F /* NewsFeedsViewModelTests.swift */; };
+		E09A5E9C26EAFD6700E5511F /* NewsFeedsStoreSuccessfullMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E9B26EAFD6700E5511F /* NewsFeedsStoreSuccessfullMock.swift */; };
+		E09A5E9F26EAFE5E00E5511F /* NewsFeedsStoreFailureMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5E9E26EAFE5E00E5511F /* NewsFeedsStoreFailureMock.swift */; };
+		E09A5EA126EB044800E5511F /* NewsFeedDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A5EA026EB044800E5511F /* NewsFeedDetailsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +137,11 @@
 		E09A5E8826EAF06900E5511F /* TextCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCellViewModelTests.swift; sourceTree = "<group>"; };
 		E09A5E8A26EAF08700E5511F /* KeyValueCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCellViewModelTests.swift; sourceTree = "<group>"; };
 		E09A5E8C26EAF0A900E5511F /* ActionKeyValueCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionKeyValueCellViewModelTests.swift; sourceTree = "<group>"; };
+		E09A5E8E26EAF46000E5511F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		E09A5E9926EAFC7A00E5511F /* NewsFeedsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedsViewModelTests.swift; sourceTree = "<group>"; };
+		E09A5E9B26EAFD6700E5511F /* NewsFeedsStoreSuccessfullMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedsStoreSuccessfullMock.swift; sourceTree = "<group>"; };
+		E09A5E9E26EAFE5E00E5511F /* NewsFeedsStoreFailureMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedsStoreFailureMock.swift; sourceTree = "<group>"; };
+		E09A5EA026EB044800E5511F /* NewsFeedDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		E67B48CB236688EAC67C1B6A /* Pods_NewsAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -214,6 +224,7 @@
 		E0159B9226E93D890011ED2D /* NewsAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				E09A5E9D26EAFE1400E5511F /* MockViewModels */,
 				E09A5E7E26EAEB1C00E5511F /* MockModel */,
 				E0159B9526E93D890011ED2D /* Info.plist */,
 				E09A5E7626EAE89400E5511F /* NewsFeedCellViewModelTests.swift */,
@@ -221,6 +232,8 @@
 				E09A5E8826EAF06900E5511F /* TextCellViewModelTests.swift */,
 				E09A5E8A26EAF08700E5511F /* KeyValueCellViewModelTests.swift */,
 				E09A5E8C26EAF0A900E5511F /* ActionKeyValueCellViewModelTests.swift */,
+				E09A5E9926EAFC7A00E5511F /* NewsFeedsViewModelTests.swift */,
+				E09A5EA026EB044800E5511F /* NewsFeedDetailsViewModelTests.swift */,
 			);
 			path = NewsAppTests;
 			sourceTree = "<group>";
@@ -277,6 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				E09A5E3E26E96F5600E5511F /* BaseCellViewModel.swift */,
+				E09A5E9026EAF57300E5511F /* NewsFeeds */,
+				E09A5E9126EAF57C00E5511F /* NeewsFeedDetails */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -328,6 +343,7 @@
 				E09A5E3526E96E6E00E5511F /* UITableViewExtension.swift */,
 				E09A5E3726E96E9600E5511F /* UITableViewCellExtension.swift */,
 				E09A5E7426EAD89B00E5511F /* UIViewControllerExtension.swift */,
+				E09A5E8E26EAF46000E5511F /* StringExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -336,7 +352,6 @@
 			isa = PBXGroup;
 			children = (
 				E09A5E4326E973C600E5511F /* NewsFeedCell */,
-				E09A5E4B26E97BFB00E5511F /* NewsFeedsViewModel.swift */,
 				E09A5E4126E971E200E5511F /* NewsFeedsViewController.swift */,
 			);
 			path = NewsFeeds;
@@ -345,7 +360,6 @@
 		E09A5E4326E973C600E5511F /* NewsFeedCell */ = {
 			isa = PBXGroup;
 			children = (
-				E09A5E4926E9792500E5511F /* NewsFeedCellViewModel.swift */,
 				E09A5E4426E973FC00E5511F /* NewsFeedTableViewCell.swift */,
 				E09A5E4526E973FC00E5511F /* NewsFeedTableViewCell.xib */,
 			);
@@ -359,7 +373,6 @@
 				E09A5E5826EAC08F00E5511F /* TextCell */,
 				E09A5E5626EAC00B00E5511F /* KeyValueCell */,
 				E09A5E5726EAC08100E5511F /* ActionKeyValueCell */,
-				E09A5E7226EAD03000E5511F /* NewsFeedDetailsViewModel.swift */,
 				E09A5E5426EABD9C00E5511F /* NewsFeedDetailsViewController.swift */,
 			);
 			path = NewsFeedDetails;
@@ -368,7 +381,6 @@
 		E09A5E5626EAC00B00E5511F /* KeyValueCell */ = {
 			isa = PBXGroup;
 			children = (
-				E09A5E5E26EAC20900E5511F /* KeyValueCellViewModel.swift */,
 				E09A5E5A26EAC0E400E5511F /* KeyValueTableViewCell.swift */,
 				E09A5E5B26EAC0E400E5511F /* KeyValueTableViewCell.xib */,
 			);
@@ -378,7 +390,6 @@
 		E09A5E5726EAC08100E5511F /* ActionKeyValueCell */ = {
 			isa = PBXGroup;
 			children = (
-				E09A5E6C26EACB2800E5511F /* ActionKeyValueCellViewModel.swift */,
 				E09A5E6E26EACBA500E5511F /* ActionKeyValueTableViewCell.swift */,
 				E09A5E6F26EACBA500E5511F /* ActionKeyValueTableViewCell.xib */,
 			);
@@ -388,7 +399,6 @@
 		E09A5E5826EAC08F00E5511F /* TextCell */ = {
 			isa = PBXGroup;
 			children = (
-				E09A5E6626EAC84200E5511F /* TextCellViewModel.swift */,
 				E09A5E6826EAC87E00E5511F /* TextTableViewCell.swift */,
 				E09A5E6926EAC87E00E5511F /* TextTableViewCell.xib */,
 			);
@@ -398,7 +408,6 @@
 		E09A5E5926EAC09800E5511F /* ImageTextCell */ = {
 			isa = PBXGroup;
 			children = (
-				E09A5E6026EAC3B200E5511F /* ImageTextCellViewModel.swift */,
 				E09A5E6226EAC42500E5511F /* ImageTextTableViewCell.swift */,
 				E09A5E6326EAC42500E5511F /* ImageTextTableViewCell.xib */,
 			);
@@ -413,6 +422,76 @@
 				E09A5E8126EAEBA300E5511F /* ArticleModel.json */,
 			);
 			path = MockModel;
+			sourceTree = "<group>";
+		};
+		E09A5E9026EAF57300E5511F /* NewsFeeds */ = {
+			isa = PBXGroup;
+			children = (
+				E09A5E9226EAF59000E5511F /* NewsFeedCell */,
+				E09A5E4B26E97BFB00E5511F /* NewsFeedsViewModel.swift */,
+			);
+			path = NewsFeeds;
+			sourceTree = "<group>";
+		};
+		E09A5E9126EAF57C00E5511F /* NeewsFeedDetails */ = {
+			isa = PBXGroup;
+			children = (
+				E09A5E9326EAF5B900E5511F /* ImageTextCell */,
+				E09A5E9626EAF5DA00E5511F /* TextCell */,
+				E09A5E9526EAF5D300E5511F /* KeyValueCell */,
+				E09A5E9426EAF5C500E5511F /* ActionKeyValueCell */,
+				E09A5E7226EAD03000E5511F /* NewsFeedDetailsViewModel.swift */,
+			);
+			path = NeewsFeedDetails;
+			sourceTree = "<group>";
+		};
+		E09A5E9226EAF59000E5511F /* NewsFeedCell */ = {
+			isa = PBXGroup;
+			children = (
+				E09A5E4926E9792500E5511F /* NewsFeedCellViewModel.swift */,
+			);
+			path = NewsFeedCell;
+			sourceTree = "<group>";
+		};
+		E09A5E9326EAF5B900E5511F /* ImageTextCell */ = {
+			isa = PBXGroup;
+			children = (
+				E09A5E6026EAC3B200E5511F /* ImageTextCellViewModel.swift */,
+			);
+			path = ImageTextCell;
+			sourceTree = "<group>";
+		};
+		E09A5E9426EAF5C500E5511F /* ActionKeyValueCell */ = {
+			isa = PBXGroup;
+			children = (
+				E09A5E6C26EACB2800E5511F /* ActionKeyValueCellViewModel.swift */,
+			);
+			path = ActionKeyValueCell;
+			sourceTree = "<group>";
+		};
+		E09A5E9526EAF5D300E5511F /* KeyValueCell */ = {
+			isa = PBXGroup;
+			children = (
+				E09A5E5E26EAC20900E5511F /* KeyValueCellViewModel.swift */,
+			);
+			path = KeyValueCell;
+			sourceTree = "<group>";
+		};
+		E09A5E9626EAF5DA00E5511F /* TextCell */ = {
+			isa = PBXGroup;
+			children = (
+				E09A5E6626EAC84200E5511F /* TextCellViewModel.swift */,
+			);
+			path = TextCell;
+			sourceTree = "<group>";
+		};
+		E09A5E9D26EAFE1400E5511F /* MockViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E09A5E9B26EAFD6700E5511F /* NewsFeedsStoreSuccessfullMock.swift */,
+				E09A5E9E26EAFE5E00E5511F /* NewsFeedsStoreFailureMock.swift */,
+			);
+			path = MockViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -599,6 +678,7 @@
 				E09A5E4C26E97BFB00E5511F /* NewsFeedsViewModel.swift in Sources */,
 				E09A5E3C26E96F1E00E5511F /* CellConfigurable.swift in Sources */,
 				E09A5E2426E94C3200E5511F /* ArticlesModel.swift in Sources */,
+				E09A5E8F26EAF46000E5511F /* StringExtension.swift in Sources */,
 				E09A5E2626E94CE100E5511F /* ArticleModel.swift in Sources */,
 				E09A5E4626E973FC00E5511F /* NewsFeedTableViewCell.swift in Sources */,
 				E09A5E5F26EAC20900E5511F /* KeyValueCellViewModel.swift in Sources */,
@@ -632,8 +712,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E09A5E8B26EAF08700E5511F /* KeyValueCellViewModelTests.swift in Sources */,
+				E09A5E9F26EAFE5E00E5511F /* NewsFeedsStoreFailureMock.swift in Sources */,
 				E09A5E8926EAF06900E5511F /* TextCellViewModelTests.swift in Sources */,
+				E09A5E9C26EAFD6700E5511F /* NewsFeedsStoreSuccessfullMock.swift in Sources */,
 				E09A5E7726EAE89400E5511F /* NewsFeedCellViewModelTests.swift in Sources */,
+				E09A5EA126EB044800E5511F /* NewsFeedDetailsViewModelTests.swift in Sources */,
+				E09A5E9A26EAFC7A00E5511F /* NewsFeedsViewModelTests.swift in Sources */,
 				E09A5E8726EAF04A00E5511F /* ImageTextCellViewModelTests.swift in Sources */,
 				E09A5E8D26EAF0A900E5511F /* ActionKeyValueCellViewModelTests.swift in Sources */,
 			);
