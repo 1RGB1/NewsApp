@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VeR-3f-k5S">
-                        <rect key="frame" x="5" y="5" width="277" height="56"/>
+                        <rect key="frame" x="5" y="10" width="277" height="51"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BN6-Xb-S5b">
                                 <rect key="frame" x="0.0" y="0.0" width="277" height="16.5"/>
@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrP-FE-QEo">
-                                <rect key="frame" x="0.0" y="16.5" width="277" height="39.5"/>
+                                <rect key="frame" x="0.0" y="16.5" width="277" height="34.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                     <constraint firstAttribute="bottom" secondItem="VeR-3f-k5S" secondAttribute="bottom" constant="5" id="BLp-Nh-bOS"/>
                     <constraint firstAttribute="trailing" secondItem="6YY-kk-b9s" secondAttribute="trailing" constant="5" id="DNZ-nM-7jP"/>
                     <constraint firstItem="6YY-kk-b9s" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HNb-TC-pTy"/>
-                    <constraint firstItem="VeR-3f-k5S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Zdh-mQ-MZv"/>
+                    <constraint firstItem="VeR-3f-k5S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Zdh-mQ-MZv"/>
                     <constraint firstItem="6YY-kk-b9s" firstAttribute="leading" secondItem="VeR-3f-k5S" secondAttribute="trailing" constant="5" id="fXE-on-SE6"/>
                 </constraints>
             </tableViewCellContentView>

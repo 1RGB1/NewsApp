@@ -12,6 +12,7 @@ class ImageTextTableViewCell: UITableViewCell {
 
     @IBOutlet weak var contentImage: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var viewContaningLabel: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +25,6 @@ extension ImageTextTableViewCell: CellConfigurable {
         
         contentImage.kf.setImage(with: viewModel.imageUrl, placeholder: UIImage(named: "placeholder"), options: [.transition(.fade(1))])
         contentLabel.text = viewModel.text
+        viewContaningLabel.isHidden = viewModel.text == ""
     }
 }

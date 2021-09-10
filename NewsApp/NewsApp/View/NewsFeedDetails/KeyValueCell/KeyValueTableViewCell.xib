@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1de-AR-WFF">
-                        <rect key="frame" x="5" y="5" width="389" height="77"/>
+                        <rect key="frame" x="5" y="10" width="389" height="72"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUf-fd-h9p">
                                 <rect key="frame" x="0.0" y="0.0" width="389" height="16.5"/>
@@ -26,7 +26,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naP-OR-lLQ">
-                                <rect key="frame" x="0.0" y="16.5" width="389" height="60.5"/>
+                                <rect key="frame" x="0.0" y="16.5" width="389" height="55.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,7 +37,7 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="1de-AR-WFF" secondAttribute="bottom" constant="5" id="I27-gj-QXz"/>
                     <constraint firstAttribute="trailing" secondItem="1de-AR-WFF" secondAttribute="trailing" constant="5" id="Rpr-N5-O4a"/>
-                    <constraint firstItem="1de-AR-WFF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kMQ-Pz-Xs6"/>
+                    <constraint firstItem="1de-AR-WFF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="kMQ-Pz-Xs6"/>
                     <constraint firstItem="1de-AR-WFF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="oAn-nx-WP4"/>
                 </constraints>
             </tableViewCellContentView>
