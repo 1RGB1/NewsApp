@@ -21,7 +21,29 @@ class NewsFeedsViewController: UIViewController {
         super.viewDidLoad()
         
         title = "News"
+        configureProgress()
+        prepSearchBar()
         prepTableView()
+    }
+    
+    fileprivate func configureProgress() {
+        ProgressHUD.animationType = .lineScaling
+        ProgressHUD.colorHUD = .systemGray
+        ProgressHUD.colorBackground = .lightGray
+        ProgressHUD.colorAnimation = .systemBlue
+        ProgressHUD.colorProgress = .systemBlue
+        ProgressHUD.fontStatus = UIFont(name: "HelveticaNeue-Regular", size: 18) ?? .boldSystemFont(ofSize: 18)
+        
+        let defaultImageConfiguration = UIImage.SymbolConfiguration(scale: .large)
+        if let successImage = UIImage(systemName: "checkmark.circle", withConfiguration: defaultImageConfiguration) {
+            ProgressHUD.imageSuccess = successImage
+        }
+        if let faildImage = UIImage(systemName: "xmark.octagon", withConfiguration: defaultImageConfiguration) {
+            ProgressHUD.imageError = faildImage
+        }
+    }
+    
+    fileprivate func prepSearchBar() {
         newsFeedsSearchBar.delegate = self
         newsFeedsSearchBar.searchTextField.delegate = self
     }
@@ -41,13 +63,18 @@ class NewsFeedsViewController: UIViewController {
     
     @objc
     fileprivate func loadData() {
-        if isSearching { ProgressHUD.show(icon: .bolt) }
+        if isSearching { ProgressHUD.show() }
         viewModel.loadNewsFeedsPage() { [weak self] in
             guard let self = self else { return }
-            if self.isSearching { ProgressHUD.dismiss() }
+            if self.isSearching {
+                ProgressHUD.dismiss()
+                ProgressHUD.colorStatus = .systemBlue
+                ProgressHUD.show(icon: .succeed)
+            }
             self.newsFeedTableView.reloadData()
             self.newsFeedTableView.finishInfiniteScroll()
         } withFailureBlock: { errorString in
+            ProgressHUD.colorStatus = .systemRed
             ProgressHUD.showError(errorString, image: nil, interaction: true)
             self.newsFeedTableView.finishInfiniteScroll()
         }
@@ -95,5 +122,17 @@ extension NewsFeedsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = newsFeedTableView.dequeueReusableCell(cellViewModel.type, for: indexPath) as? CellConfigurable else { return UITableViewCell() }
         cell.setUp(model: cellViewModel)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellViewModel = viewModel.cellsViewModels[indexPath.row]
+        guard let newsFeedCellViewModel = cellViewModel as? NewsFeedCellViewModel else { return }
+        let article = newsFeedCellViewModel.article
+        let newsFeedDetailsViewModel = NewsFeedDetailsViewModel(article: article)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        guard let detailsViewController = storyboard.instantiateViewController(withIdentifier: "NewsFeedDetailsViewController") as? NewsFeedDetailsViewController else { return }
+        detailsViewController.viewModel = newsFeedDetailsViewModel
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }

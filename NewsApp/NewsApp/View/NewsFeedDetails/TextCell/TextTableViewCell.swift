@@ -20,6 +20,6 @@ extension TextTableViewCell: CellConfigurable {
     func setUp(model: BaseCellViewModel) {
         guard let viewModel = model as? TextCellViewModel else { return }
         contentLabel.text = viewModel.text
-        contentLabel.font = UIFont(name: contentLabel.font.fontName, size: viewModel.fontSize)
+        contentLabel.font = viewModel.font
     }
 }

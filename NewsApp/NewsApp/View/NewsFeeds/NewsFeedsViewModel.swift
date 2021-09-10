@@ -41,10 +41,8 @@ class NewsFeedViewModel {
         
         guard let articles = articlesModel.articles else { return }
         
-        let articlesViewModels = articles.map { (articleModel) -> NewsFeedTableViewCellViewModel in
-            let url = URL(string: articleModel.urlToImage ?? "")
-            let source = articleModel.source?.name ?? ""
-            return NewsFeedTableViewCellViewModel(type: NewsFeedTableViewCell.self, imageUrl: url, description: articleModel.description, source: source)
+        let articlesViewModels = articles.map {
+            NewsFeedCellViewModel(article: $0)
         }
         
         cellsViewModels.append(contentsOf: articlesViewModels)

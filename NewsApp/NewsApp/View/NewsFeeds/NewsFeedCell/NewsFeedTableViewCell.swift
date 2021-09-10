@@ -24,10 +24,11 @@ class NewsFeedTableViewCell: UITableViewCell {
 
 extension NewsFeedTableViewCell: CellConfigurable {
     func setUp(model: BaseCellViewModel) {
-        guard let viewModel = model as? NewsFeedTableViewCellViewModel else { return }
+        guard let viewModel = model as? NewsFeedCellViewModel else { return }
         
-        newsFeedImageView.kf.setImage(with: viewModel.imageUrl, placeholder: UIImage(named: "placeholder"), options: [.transition(.fade(1))])
-        newsFeedDescriptionLabel.text = viewModel.description ?? "N/A"
-        newsFeedSourceLabel.text = viewModel.source ?? "N/A"
+        let imageUrl = URL(string: viewModel.article.urlToImage ?? "")
+        newsFeedImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "placeholder"), options: [.transition(.fade(1))])
+        newsFeedDescriptionLabel.text = viewModel.article.description ?? "N/A"
+        newsFeedSourceLabel.text = viewModel.article.source?.name ?? "N/A"
     }
 }

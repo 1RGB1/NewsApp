@@ -9,8 +9,15 @@ import Foundation
 import UIKit
 
 struct KeyValueCellViewModel: BaseCellViewModel {
+    
     var type: UITableViewCell.Type
     let key: String
     let value: String?
+    
+    init(type: UITableViewCell.Type = KeyValueTableViewCell.self, key: String, value: String?) {
+        self.type = type
+        self.key = key
+        self.value = value
+    }
 }
 

@@ -25,7 +25,7 @@ extension ImageTextTableViewCell: CellConfigurable {
         
         contentImage.kf.setImage(with: viewModel.imageUrl, placeholder: UIImage(named: "placeholder"), options: [.transition(.fade(1))])
         
-        if let text = viewModel.text, text != "" {
+        if viewModel.text != "" {
             contentLabel.text = viewModel.text
         } else {
             viewContaningLabel.isHidden = true

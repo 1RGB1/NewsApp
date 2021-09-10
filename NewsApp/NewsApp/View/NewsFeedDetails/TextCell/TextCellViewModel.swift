@@ -9,7 +9,14 @@ import Foundation
 import UIKit
 
 struct TextCellViewModel: BaseCellViewModel {
+    
     var type: UITableViewCell.Type
     let text: String
-    let fontSize: CGFloat
+    let font: UIFont
+    
+    init(type: UITableViewCell.Type = TextTableViewCell.self, text: String, font: UIFont) {
+        self.type = type
+        self.text = text
+        self.font = font
+    }
 }
